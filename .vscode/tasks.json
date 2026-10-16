@@ -3,8 +3,10 @@
     "tasks": [
         {
             "label": "dev server",
-            "type": "npm",
-            "script": "dev",
+            // Run npm.cmd directly: PowerShell blocks npm.ps1 under the default script policy.
+            "type": "process",
+            "command": "npm.cmd",
+            "args": ["run", "dev"],
             "isBackground": true,
             "problemMatcher": {
                 "owner": "vite",
