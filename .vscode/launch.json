@@ -1,0 +1,16 @@
+{
+    // Press F5 (or Run > Start Debugging) to start the dev server and open the site in Chrome.
+    // Edits to src/ show up live in the browser without restarting.
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Run website",
+            "url": "http://localhost:5173",
+            "webRoot": "${workspaceFolder}",
+            "preLaunchTask": "dev server",
+            "postDebugTask": "stop dev server"
+        }
+    ]
+}
