@@ -1,0 +1,112 @@
+.page {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse 60% 40% at 50% 0%, rgba(228, 173, 175, 0.12), transparent 70%),
+    radial-gradient(ellipse 50% 40% at 85% 100%, rgba(88, 122, 188, 0.12), transparent 70%),
+    var(--mantine-color-dark-8);
+}
+
+.pixel {
+  font-family: Silkscreen, monospace;
+  letter-spacing: 0.04em;
+  text-transform: lowercase;
+}
+
+.name {
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  line-height: 1;
+  color: var(--mantine-color-dark-0);
+  margin-top: -8px;
+}
+
+/* Face is the 8x8 head-front region (8,8) of the 64x64 skin, hat overlay at (40,8). */
+.face {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  border-radius: 6px;
+  box-shadow:
+    0 0 0 4px var(--mantine-color-dark-7),
+    0 0 0 6px var(--mantine-color-blush-4),
+    0 12px 40px rgba(228, 173, 175, 0.25);
+  overflow: hidden;
+  transition: transform 200ms ease;
+}
+
+.face:hover {
+  transform: rotate(-4deg) scale(1.05);
+}
+
+.faceBase,
+.faceHat {
+  position: absolute;
+  inset: 0;
+  background-image: url('/skin.png');
+  background-size: 800% 800%;
+  image-rendering: pixelated;
+}
+
+.faceBase {
+  background-position: calc(-96px * 1) calc(-96px * 1);
+}
+
+.faceHat {
+  background-position: calc(-96px * 5) calc(-96px * 1);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--mantine-color-dark-7);
+  border: 1px solid var(--mantine-color-dark-5);
+  color: inherit;
+  text-decoration: none;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.card:not([data-tba]):hover {
+  transform: translateY(-4px);
+  border-color: var(--mantine-color-blush-5);
+  box-shadow: 0 10px 30px rgba(228, 173, 175, 0.15);
+}
+
+.card:not([data-tba]):focus-visible {
+  outline: 2px solid var(--mantine-color-tie-2);
+  outline-offset: 3px;
+}
+
+.card[data-tba] {
+  background: transparent;
+  border-style: dashed;
+  cursor: default;
+}
+
+.arrow {
+  color: var(--mantine-color-dark-3);
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.card:hover .arrow {
+  color: var(--mantine-color-blush-4);
+  transform: translate(2px, -2px);
+}
+
+.footerLink:hover {
+  color: var(--mantine-color-blush-4);
+}
+
+.icon {
+  background: rgba(228, 173, 175, 0.14);
+  color: var(--mantine-color-blush-3);
+}
+
+.card[data-tba] .icon {
+  background: var(--mantine-color-dark-6);
+  color: var(--mantine-color-dark-2);
+}
