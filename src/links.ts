@@ -110,25 +110,25 @@ const github: Social = {
 
 /** Socials on the main page: matthewhearst.com/portfolio */
 export const portfolioSocials: Social[] = [
-  {
-    name: 'Instagram',
-    handle: '@matthewhearst1',
-    icon: IconBrandInstagram,
-    href: 'https://www.instagram.com/matthewhearst1/',
-  },
+  github,
   {
     name: 'LinkedIn',
     handle: 'Matthew Hearst',
     icon: IconBrandLinkedin,
     href: 'https://www.linkedin.com/in/matthew-hearst-57890b405/',
   },
-  github,
+  {
+    name: 'Instagram',
+    handle: '@matthewhearst1',
+    icon: IconBrandInstagram,
+    href: 'https://www.instagram.com/matthewhearst1/',
+  },
 ];
 
 /** Socials on matthewhearst.com/urmamge */
 export const urmamgeSocials: Social[] = [
-  { name: 'Twitch', handle: 'urmamge', icon: IconBrandTwitch, href: 'https://www.twitch.tv/urmamge' },
   { name: 'YouTube', handle: '@urmamge', icon: IconBrandYoutube, href: 'https://www.youtube.com/@urmamge' },
+  { name: 'Twitch', handle: 'urmamge', icon: IconBrandTwitch, href: 'https://www.twitch.tv/urmamge' },
   { name: 'X', handle: '@urmamge', icon: IconBrandX, href: 'https://x.com/urmamge' },
   github,
 ];
