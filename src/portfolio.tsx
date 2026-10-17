@@ -1,4 +1,4 @@
-import { portfolioDestinations } from './links';
+import { portfolioDestinations, portfolioSocials } from './links';
 import { render } from './render';
 
-render({ name: 'urmamge', destinations: portfolioDestinations, pixelFont: true });
+render({ name: 'urmamge', destinations: portfolioDestinations, socials: portfolioSocials, pixelFont: true });

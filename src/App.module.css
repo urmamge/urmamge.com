@@ -116,3 +116,43 @@
   background: var(--mantine-color-dark-6);
   color: var(--mantine-color-dark-2);
 }
+
+/* Socials use the blue (tie/eyes) side of the palette to set them apart from the blush project cards. */
+.socials {
+  padding: var(--mantine-spacing-lg);
+  border-radius: var(--mantine-radius-lg);
+  background: rgba(88, 122, 188, 0.08);
+  border: 1px solid rgba(88, 122, 188, 0.25);
+}
+
+.socialCard {
+  background: rgba(88, 122, 188, 0.1);
+  border: 1px solid rgba(88, 122, 188, 0.3);
+  color: inherit;
+  text-decoration: none;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.socialCard:hover {
+  transform: translateY(-3px);
+  border-color: var(--mantine-color-tie-3);
+  box-shadow: 0 10px 30px rgba(88, 122, 188, 0.2);
+}
+
+.socialCard:focus-visible {
+  outline: 2px solid var(--mantine-color-tie-2);
+  outline-offset: 3px;
+}
+
+.socialCard:hover .arrow {
+  color: var(--mantine-color-tie-2);
+  transform: translate(2px, -2px);
+}
+
+.socialIcon {
+  background: rgba(136, 198, 245, 0.14);
+  color: var(--mantine-color-tie-2);
+}

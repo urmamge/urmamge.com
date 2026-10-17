@@ -1,6 +1,11 @@
 import type { Icon } from '@tabler/icons-react';
 import {
+  IconBrandInstagram,
+  IconBrandLinkedin,
   IconBrandSpotify,
+  IconBrandTwitch,
+  IconBrandX,
+  IconBrandYoutube,
   IconDeviceGamepad2,
   IconHeadphones,
   IconSalad,
@@ -87,3 +92,35 @@ export const homeDestinations = destinationsFor('home');
 
 /** Portfolio page: matthewhearst.com/portfolio (the original version of the main page) */
 export const portfolioDestinations = destinationsFor('portfolio');
+
+export interface Social {
+  name: string;
+  handle: string;
+  icon: Icon;
+  href: string;
+}
+
+/** Socials on the main page: matthewhearst.com */
+export const homeSocials: Social[] = [
+  {
+    name: 'Instagram',
+    handle: '@matthewhearst1',
+    icon: IconBrandInstagram,
+    href: 'https://www.instagram.com/matthewhearst1/',
+  },
+  {
+    name: 'LinkedIn',
+    handle: 'Matthew Hearst',
+    icon: IconBrandLinkedin,
+    href: 'https://www.linkedin.com/in/matthew-hearst-57890b405/',
+  },
+];
+
+/** Socials on the portfolio page: matthewhearst.com/portfolio */
+export const portfolioSocials: Social[] = [
+  { name: 'Twitch', handle: 'urmamge', icon: IconBrandTwitch, href: 'https://www.twitch.tv/urmamge' },
+  { name: 'YouTube', handle: '@urmamge', icon: IconBrandYoutube, href: 'https://www.youtube.com/@urmamge' },
+  { name: 'X', handle: '@urmamge', icon: IconBrandX, href: 'https://x.com/urmamge' },
+];
+
+export const contactEmail = 'owner@matthewhearst.com';

@@ -11,13 +11,14 @@ import {
   ThemeIcon,
   Title,
 } from '@mantine/core';
-import { IconArrowUpRight, IconBrandGithub, IconClock } from '@tabler/icons-react';
-import type { Destination } from './links';
+import { IconArrowUpRight, IconBrandGithub, IconClock, IconMail } from '@tabler/icons-react';
+import { contactEmail, type Destination, type Social } from './links';
 import classes from './App.module.css';
 
 interface AppProps {
   name: string;
   destinations: Destination[];
+  socials: Social[];
   /** Use the Minecraft-style pixel font for small labels. */
   pixelFont?: boolean;
 }
@@ -79,7 +80,34 @@ function DestinationCard({
   );
 }
 
-export default function App({ name, destinations, pixelFont = false }: AppProps) {
+function SocialCard({ name, handle, icon: Icon, href, labelClass }: Social & { labelClass: string }) {
+  return (
+    <Card
+      component="a"
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={classes.socialCard}
+      padding="md"
+      radius="lg"
+    >
+      <Group gap="md" wrap="nowrap">
+        <ThemeIcon size={40} radius="md" className={classes.socialIcon}>
+          <Icon size={22} stroke={1.6} />
+        </ThemeIcon>
+        <div style={{ minWidth: 0 }}>
+          <Text fw={600}>{name}</Text>
+          <Text size="xs" c="tie.2" className={labelClass} truncate>
+            {handle}
+          </Text>
+        </div>
+        <IconArrowUpRight className={classes.arrow} size={20} style={{ marginLeft: 'auto', flexShrink: 0 }} />
+      </Group>
+    </Card>
+  );
+}
+
+export default function App({ name, destinations, socials, pixelFont = false }: AppProps) {
   const labelClass = pixelFont ? classes.pixel : classes.label;
 
   return (
@@ -105,7 +133,18 @@ export default function App({ name, destinations, pixelFont = false }: AppProps)
           ))}
         </SimpleGrid>
 
-        <Group justify="center" mt={80}>
+        <Box className={classes.socials} mt={56}>
+          <Text className={labelClass} c="tie.2" size="xs" mb="sm">
+            socials
+          </Text>
+          <SimpleGrid cols={{ base: 1, xs: socials.length > 2 ? 3 : 2 }} spacing="md">
+            {socials.map((social) => (
+              <SocialCard key={social.name} {...social} labelClass={labelClass} />
+            ))}
+          </SimpleGrid>
+        </Box>
+
+        <Stack align="center" gap="xs" mt={80}>
           <Anchor
             href="https://github.com/urmamge"
             target="_blank"
@@ -119,7 +158,14 @@ export default function App({ name, destinations, pixelFont = false }: AppProps)
               github.com/urmamge
             </Group>
           </Anchor>
-        </Group>
+          <Anchor href={`mailto:${contactEmail}`} c="dark.3" size="sm" className={classes.footerLink}>
+            <Group gap={6}>
+              <IconMail size={16} />
+              <span className={labelClass}>contact</span>
+              {contactEmail}
+            </Group>
+          </Anchor>
+        </Stack>
       </Container>
     </Box>
   );
