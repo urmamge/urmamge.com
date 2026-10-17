@@ -11,6 +11,7 @@
 
 /* Matches the warm "about me" box on the main pages. */
 .panel {
+  min-width: 0;
   padding: var(--mantine-spacing-xl);
   border-radius: var(--mantine-radius-lg);
   background: rgba(254, 234, 222, 0.05);
@@ -85,4 +86,64 @@
   font-size: 0.85em;
   word-break: break-all;
   color: var(--mantine-color-tie-2);
+}
+
+.command {
+  display: block;
+  margin-top: 6px;
+  padding: 8px 10px;
+  border-radius: var(--mantine-radius-sm);
+  background: var(--mantine-color-dark-9);
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 0.85em;
+  color: var(--mantine-color-tie-2);
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+/* A mock of the Windows 11 right-click menu with the speed submenu open. */
+.menuPreview {
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-size: 14px;
+}
+
+.menu {
+  min-width: 150px;
+  padding: 4px;
+  background: #2c2c2c;
+  border: 1px solid #3c3c3c;
+  border-radius: 8px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+  color: #fff;
+}
+
+.menu + .menu {
+  margin-top: 72px;
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 6px 12px;
+  border-radius: 4px;
+}
+
+.menuItem[data-active] {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+@media (max-width: 480px) {
+  .menuPreview {
+    font-size: 13px;
+  }
+
+  .menuItem {
+    gap: 12px;
+    padding: 6px 8px;
+  }
 }

@@ -16,6 +16,8 @@ export default defineConfig({
         plugins: resolve(import.meta.dirname, 'plugins/index.html'),
         spotifyoverlay: resolve(import.meta.dirname, 'plugins/spotifyoverlay/index.html'),
         davinci: resolve(import.meta.dirname, 'plugins/davinci-placeholder/index.html'),
+        apps: resolve(import.meta.dirname, 'apps/index.html'),
+        doctoaudio: resolve(import.meta.dirname, 'apps/doctoaudio/index.html'),
       },
     },
   },
