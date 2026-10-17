@@ -5,6 +5,8 @@ export interface About {
   skills: string[];
   /** Link to the CV PDF. Leave undefined to show a "coming soon" placeholder. */
   cvHref?: string;
+  /** Show Discord and email contact buttons instead of the CV button. */
+  contact?: { discord: string };
 }
 
 /** About section on matthewhearst.com/portfolio */
@@ -21,4 +23,20 @@ export const portfolioAbout: About = {
   skillsLabel: "Languages I've worked with",
   skills: ['JavaScript', 'Java', 'C#'],
   // TODO: set to '/cv.pdf' (and add public/cv.pdf) once the CV is ready
+};
+
+/** About section on matthewhearst.com/urmamge */
+export const urmamgeAbout: About = {
+  paragraphs: [
+    "I'm a freelance video editor with experience editing both long-form videos and short-form content. I edit in DaVinci Resolve.",
+    "I'm looking for new editing opportunities. If you need an editor for your videos, message me on Discord or send me an email.",
+  ],
+  facts: [
+    { label: 'Role', value: 'Freelance video editor' },
+    { label: 'Experience', value: 'Long-form and short-form' },
+    { label: 'Open to', value: 'Editing opportunities' },
+  ],
+  skillsLabel: 'Software',
+  skills: ['DaVinci Resolve'],
+  contact: { discord: 'urmamge' },
 };

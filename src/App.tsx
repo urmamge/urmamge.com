@@ -5,14 +5,16 @@ import {
   Button,
   Card,
   Container,
+  CopyButton,
   Group,
   SimpleGrid,
   Stack,
   Text,
   ThemeIcon,
   Title,
+  Tooltip,
 } from '@mantine/core';
-import { IconArrowUpRight, IconClock, IconFileCv, IconMail } from '@tabler/icons-react';
+import { IconArrowUpRight, IconBrandDiscord, IconClock, IconFileCv, IconMail } from '@tabler/icons-react';
 import type { About } from './about';
 import { contactEmail, type Destination, type Social } from './links';
 import { useLiveStatus } from './live';
@@ -165,7 +167,23 @@ function AboutSection({ about, labelClass }: { about: About; labelClass: string 
             ))}
           </Group>
         </div>
-        {about.cvHref ? (
+        {about.contact ? (
+          <Group gap="xs">
+            {/* Discord usernames have no profile URL, so the button copies the name instead. */}
+            <CopyButton value={about.contact.discord}>
+              {({ copied, copy }) => (
+                <Tooltip label="Copy my Discord username">
+                  <Button onClick={copy} leftSection={<IconBrandDiscord size={18} />} color="tie.5">
+                    {copied ? 'Copied!' : about.contact!.discord}
+                  </Button>
+                </Tooltip>
+              )}
+            </CopyButton>
+            <Button component="a" href={`mailto:${contactEmail}`} leftSection={<IconMail size={18} />} color="blush">
+              Email me
+            </Button>
+          </Group>
+        ) : about.cvHref ? (
           <Button component="a" href={about.cvHref} download leftSection={<IconFileCv size={18} />} color="blush">
             Download CV
           </Button>
