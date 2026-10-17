@@ -36,7 +36,8 @@ const spotify: Destination = {
   title: 'Spotify Now Playing',
   description: 'OBS plugin showing the current Spotify track. Going public soon.',
   icon: IconBrandSpotify,
-  // TODO: add href once the repo is public
+  href: 'https://github.com/urmamge/obs-spotify-now-playing',
+  host: 'github.com/urmamge/obs-spotify-now-playing',
 };
 
 const docToAudio: Destination = {
@@ -51,7 +52,8 @@ const dissertation: Destination = {
   title: 'Final Dissertation',
   description: 'My final-year university dissertation.',
   icon: IconSchool,
-  // TODO: add href to the GitHub repo once it's ready
+  href: 'https://github.com/urmamge/final-dissertation',
+  host: 'github.com/urmamge/final-dissertation',
 };
 
 const portfolio = {
