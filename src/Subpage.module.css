@@ -1,0 +1,88 @@
+.back:hover {
+  color: var(--mantine-color-blush-4);
+  text-decoration: none;
+}
+
+.title {
+  font-size: clamp(2.25rem, 7vw, 3.5rem);
+  line-height: 1.05;
+  color: var(--mantine-color-dark-0);
+}
+
+/* Matches the warm "about me" box on the main pages. */
+.panel {
+  padding: var(--mantine-spacing-xl);
+  border-radius: var(--mantine-radius-lg);
+  background: rgba(254, 234, 222, 0.05);
+  border: 1px solid rgba(254, 234, 222, 0.16);
+}
+
+.pluginButton {
+  height: auto;
+  padding: var(--mantine-spacing-lg) var(--mantine-spacing-xl);
+  font-size: var(--mantine-font-size-lg);
+}
+
+.pluginButton:disabled,
+.pluginButton[data-disabled] {
+  background: transparent;
+  border: 1px dashed var(--mantine-color-dark-4);
+  color: var(--mantine-color-dark-2);
+}
+
+/* A mock of the overlay itself: Spotify's now-playing corner on black. */
+.preview {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: min(384px, 100%);
+  padding: 12px;
+  background: #000;
+  border-radius: var(--mantine-radius-md);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+  font-family: 'Segoe UI Semibold', 'Segoe UI', system-ui, sans-serif;
+}
+
+.previewArt {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 4px;
+  background: linear-gradient(135deg, var(--mantine-color-blush-4), var(--mantine-color-tie-5));
+}
+
+.previewTitle {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.previewArtist {
+  color: #b3b3b3;
+  font-size: 13px;
+}
+
+.step {
+  display: flex;
+  gap: var(--mantine-spacing-md);
+}
+
+.stepNumber {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(228, 173, 175, 0.14);
+  color: var(--mantine-color-blush-3);
+  font-weight: 600;
+  font-size: var(--mantine-font-size-sm);
+}
+
+.path {
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 0.85em;
+  word-break: break-all;
+  color: var(--mantine-color-tie-2);
+}

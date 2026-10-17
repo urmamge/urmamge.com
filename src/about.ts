@@ -26,7 +26,7 @@ export const portfolioAbout: About = {
     { label: 'Open to', value: 'Graduate roles, freelance work' },
   ],
   skillsLabel: "Languages I've worked with",
-  skills: ['JavaScript', 'Java', 'C#'],
+  skills: ['JavaScript', 'TypeScript', 'Java', 'C#'],
   // TODO: set to '/cv.pdf' (and add public/cv.pdf) once the CV is ready
 };
 

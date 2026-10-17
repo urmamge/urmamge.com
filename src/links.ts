@@ -43,8 +43,8 @@ const spotify: Destination = {
   title: 'Spotify Now Playing',
   description: 'OBS plugin showing the current Spotify track. Going public soon.',
   icon: IconBrandSpotify,
-  href: 'https://github.com/urmamge/obs-spotify-now-playing',
-  host: 'github.com/urmamge/obs-spotify-now-playing',
+  href: '/plugins/spotifyoverlay/',
+  host: 'matthewhearst.com/plugins/spotifyoverlay',
 };
 
 const docToAudio: Destination = {
