@@ -60,30 +60,35 @@ const portfolio = {
   icon: IconUserCircle,
 };
 
+type Page = 'home' | 'portfolio';
+
+/**
+ * Cards shown on both pages, in display order: Portfolio first, TBA cards last,
+ * Final Dissertation at the very end. Add new cards here so both pages get them.
+ */
+function destinationsFor(page: Page): Destination[] {
+  return [
+    page === 'home'
+      ? { ...portfolio, href: '/portfolio/', host: 'matthewhearst.com/portfolio' }
+      : // On the portfolio page, the Portfolio card takes you back to the main page.
+        { ...portfolio, href: '/', host: 'matthewhearst.com' },
+    overwatchBot,
+    page === 'home'
+      ? // calorietracker/index.html forwards to the GitHub Pages site.
+        { ...calorieTracker, href: '/calorietracker/', host: 'matthewhearst.com/calorietracker' }
+      : {
+          ...calorieTracker,
+          href: 'https://urmamge.github.io/calorieTracker/',
+          host: 'urmamge.github.io/calorieTracker',
+        },
+    docToAudio,
+    spotify,
+    dissertation,
+  ];
+}
+
 /** Main page: matthewhearst.com */
-export const homeDestinations: Destination[] = [
-  overwatchBot,
-  {
-    ...calorieTracker,
-    // calorietracker/index.html forwards to the GitHub Pages site.
-    href: '/calorietracker/',
-    host: 'matthewhearst.com/calorietracker',
-  },
-  docToAudio,
-  spotify,
-  dissertation,
-  { ...portfolio, href: '/portfolio/', host: 'matthewhearst.com/portfolio' },
-];
+export const homeDestinations = destinationsFor('home');
 
 /** Portfolio page: matthewhearst.com/portfolio (the original version of the main page) */
-export const portfolioDestinations: Destination[] = [
-  overwatchBot,
-  {
-    ...calorieTracker,
-    href: 'https://urmamge.github.io/calorieTracker/',
-    host: 'urmamge.github.io/calorieTracker',
-  },
-  spotify,
-  // On the portfolio page, the Portfolio card takes you back to the main page.
-  { ...portfolio, href: '/', host: 'matthewhearst.com' },
-];
+export const portfolioDestinations = destinationsFor('portfolio');
