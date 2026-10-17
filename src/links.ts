@@ -13,6 +13,7 @@ import {
   IconSchool,
   IconUserCircle,
 } from '@tabler/icons-react';
+import type { LiveCheck } from './live';
 
 export interface Destination {
   title: string;
@@ -99,6 +100,8 @@ export interface Social {
   handle: string;
   icon: Icon;
   href: string;
+  /** Show a "live" badge on the card while this channel is streaming. */
+  live?: LiveCheck;
 }
 
 const github: Social = {
@@ -127,8 +130,20 @@ export const portfolioSocials: Social[] = [
 
 /** Socials on matthewhearst.com/urmamge */
 export const urmamgeSocials: Social[] = [
-  { name: 'YouTube', handle: '@urmamge', icon: IconBrandYoutube, href: 'https://www.youtube.com/@urmamge' },
-  { name: 'Twitch', handle: 'urmamge', icon: IconBrandTwitch, href: 'https://www.twitch.tv/urmamge' },
+  {
+    name: 'YouTube',
+    handle: '@urmamge',
+    icon: IconBrandYoutube,
+    href: 'https://www.youtube.com/@urmamge',
+    live: { platform: 'youtube', channelId: 'UCAkA3j2Sek-WbeMOK-bEdGA' },
+  },
+  {
+    name: 'Twitch',
+    handle: 'urmamge',
+    icon: IconBrandTwitch,
+    href: 'https://www.twitch.tv/urmamge',
+    live: { platform: 'twitch', channel: 'urmamge' },
+  },
   { name: 'X', handle: '@urmamge', icon: IconBrandX, href: 'https://x.com/urmamge' },
   github,
 ];

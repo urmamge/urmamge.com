@@ -2,6 +2,7 @@ import {
   Anchor,
   Badge,
   Box,
+  Button,
   Card,
   Container,
   Group,
@@ -11,12 +12,18 @@ import {
   ThemeIcon,
   Title,
 } from '@mantine/core';
-import { IconArrowUpRight, IconClock, IconMail } from '@tabler/icons-react';
+import { IconArrowUpRight, IconClock, IconFileCv, IconMail } from '@tabler/icons-react';
+import type { About } from './about';
 import { contactEmail, type Destination, type Social } from './links';
+import { useLiveStatus } from './live';
 import classes from './App.module.css';
 
 interface AppProps {
   name: string;
+  /** Line under the name. */
+  tagline: string;
+  /** Optional "about me" section shown between the header and the rest of the page. */
+  about?: About;
   destinations: Destination[];
   socials: Social[];
   /** Use the Minecraft-style pixel font for small labels. */
@@ -82,7 +89,9 @@ function DestinationCard({
   );
 }
 
-function SocialCard({ name, handle, icon: Icon, href, labelClass }: Social & { labelClass: string }) {
+function SocialCard({ name, handle, icon: Icon, href, live, labelClass }: Social & { labelClass: string }) {
+  const isLive = useLiveStatus(live);
+
   return (
     <Card
       component="a"
@@ -90,6 +99,7 @@ function SocialCard({ name, handle, icon: Icon, href, labelClass }: Social & { l
       target="_blank"
       rel="noopener noreferrer"
       className={classes.socialCard}
+      data-live={isLive || undefined}
       padding="md"
       radius="lg"
     >
@@ -98,7 +108,15 @@ function SocialCard({ name, handle, icon: Icon, href, labelClass }: Social & { l
           <Icon size={22} stroke={1.6} />
         </ThemeIcon>
         <div style={{ minWidth: 0 }}>
-          <Text fw={600}>{name}</Text>
+          <Group gap={8} wrap="nowrap">
+            <Text fw={600}>{name}</Text>
+            {isLive && (
+              <Badge size="sm" radius="sm" className={`${classes.liveBadge} ${labelClass}`}>
+                <span className={classes.liveDot} />
+                live
+              </Badge>
+            )}
+          </Group>
           <Text size="xs" c="tie.2" className={labelClass} truncate>
             {handle}
           </Text>
@@ -109,8 +127,62 @@ function SocialCard({ name, handle, icon: Icon, href, labelClass }: Social & { l
   );
 }
 
+function AboutSection({ about, labelClass }: { about: About; labelClass: string }) {
+  return (
+    <Box className={classes.about}>
+      <Text className={labelClass} c="blush.2" size="xs" mb="sm">
+        about me
+      </Text>
+      <Stack gap="sm" mb="lg">
+        {about.paragraphs.map((paragraph) => (
+          <Text key={paragraph} c="dark.1">
+            {paragraph}
+          </Text>
+        ))}
+      </Stack>
+
+      <SimpleGrid cols={{ base: 1, xs: about.facts.length }} spacing="md" mb="lg">
+        {about.facts.map(({ label, value }) => (
+          <div key={label}>
+            <Text className={labelClass} c="dark.3" size="xs">
+              {label}
+            </Text>
+            <Text fw={500}>{value}</Text>
+          </div>
+        ))}
+      </SimpleGrid>
+
+      <Group justify="space-between" align="flex-end" gap="md">
+        <div>
+          <Text className={labelClass} c="dark.3" size="xs" mb={6}>
+            {about.skillsLabel}
+          </Text>
+          <Group gap="xs">
+            {about.skills.map((skill) => (
+              <Badge key={skill} size="lg" radius="sm" className={classes.skill}>
+                {skill}
+              </Badge>
+            ))}
+          </Group>
+        </div>
+        {about.cvHref ? (
+          <Button component="a" href={about.cvHref} download leftSection={<IconFileCv size={18} />} color="blush">
+            Download CV
+          </Button>
+        ) : (
+          <Button disabled variant="default" leftSection={<IconFileCv size={18} />}>
+            CV coming soon
+          </Button>
+        )}
+      </Group>
+    </Box>
+  );
+}
+
 export default function App({
   name,
+  tagline,
+  about,
   destinations,
   socials,
   pixelFont = false,
@@ -153,12 +225,13 @@ export default function App({
             hi, i'm
           </Text>
           <Title className={classes.name}>{name}</Title>
-          <Text c="dark.2" maw={460}>
-            Things I've built and where to find them. Pick somewhere to go.
+          <Text c="dark.2" maw={520}>
+            {tagline}
           </Text>
         </Stack>
 
         <Stack gap={56}>
+          {about && <AboutSection about={about} labelClass={labelClass} />}
           {socialsFirst ? socialsSection : placesSection}
           {socialsFirst ? placesSection : socialsSection}
         </Stack>

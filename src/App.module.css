@@ -156,3 +156,54 @@
   background: rgba(136, 198, 245, 0.14);
   color: var(--mantine-color-tie-2);
 }
+
+/* About uses the warm skin tone so it reads as its own section. */
+.about {
+  padding: var(--mantine-spacing-xl);
+  border-radius: var(--mantine-radius-lg);
+  background: rgba(254, 234, 222, 0.05);
+  border: 1px solid rgba(254, 234, 222, 0.16);
+}
+
+.skill {
+  background: rgba(254, 234, 222, 0.1);
+  color: var(--mantine-color-blush-1);
+  border: 1px solid rgba(254, 234, 222, 0.2);
+  text-transform: none;
+  font-weight: 500;
+}
+
+.socialCard[data-live] {
+  border-color: rgba(239, 68, 68, 0.6);
+  box-shadow: 0 0 0 1px rgba(239, 68, 68, 0.25), 0 8px 24px rgba(239, 68, 68, 0.15);
+}
+
+.liveBadge {
+  background: #e5484d;
+  color: #fff;
+  padding-inline: 6px;
+  overflow: visible;
+}
+
+.liveDot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-right: 5px;
+  border-radius: 50%;
+  background: #fff;
+  vertical-align: middle;
+  animation: livePulse 1.4s ease-in-out infinite;
+}
+
+@keyframes livePulse {
+  50% {
+    opacity: 0.3;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .liveDot {
+    animation: none;
+  }
+}
