@@ -1,6 +1,7 @@
 import { Button, SimpleGrid } from '@mantine/core';
 import { IconBrandSpotify, IconClock } from '@tabler/icons-react';
 import { mount } from './render';
+import KofiButton from './KofiButton';
 import Subpage from './Subpage';
 import classes from './Subpage.module.css';
 
@@ -8,6 +9,7 @@ import classes from './Subpage.module.css';
 mount(
   <Subpage
     back={{ href: '/portfolio/', label: 'Back to portfolio' }}
+    action={<KofiButton />}
     eyebrow="plugins"
     title="Plugins"
     intro="Plugins I've made"

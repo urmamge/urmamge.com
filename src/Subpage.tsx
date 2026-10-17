@@ -1,7 +1,7 @@
 import { Anchor, Box, Container, Group, Stack, Text, Title } from '@mantine/core';
-import { IconArrowLeft, IconMail } from '@tabler/icons-react';
+import { IconArrowLeft } from '@tabler/icons-react';
 import type { ReactNode } from 'react';
-import { contactEmail } from './links';
+import Footer from './Footer';
 import appClasses from './App.module.css';
 import classes from './Subpage.module.css';
 
@@ -13,11 +13,13 @@ interface SubpageProps {
   title: string;
   /** Optional line under the title. */
   intro?: string;
+  /** Small element shown beside the title, e.g. <KofiButton />. */
+  action?: ReactNode;
   children?: ReactNode;
 }
 
 /** Layout for pages below the main ones, e.g. matthewhearst.com/plugins. */
-export default function Subpage({ back, eyebrow, title, intro, children }: SubpageProps) {
+export default function Subpage({ back, eyebrow, title, intro, action, children }: SubpageProps) {
   return (
     <Box className={appClasses.page}>
       <Container size="md" py={{ base: 32, sm: 64 }}>
@@ -32,7 +34,10 @@ export default function Subpage({ back, eyebrow, title, intro, children }: Subpa
           <Text className={appClasses.label} c="blush.4" size="sm">
             {eyebrow}
           </Text>
-          <Title className={classes.title}>{title}</Title>
+          <Group justify="space-between" align="center" gap="md">
+            <Title className={classes.title}>{title}</Title>
+            {action}
+          </Group>
           {intro && (
             <Text c="dark.2" maw={560}>
               {intro}
@@ -42,15 +47,7 @@ export default function Subpage({ back, eyebrow, title, intro, children }: Subpa
 
         {children}
 
-        <Stack align="center" gap="xs" mt={80}>
-          <Anchor href={`mailto:${contactEmail}`} c="dark.3" size="sm" className={appClasses.footerLink}>
-            <Group gap={6}>
-              <IconMail size={16} />
-              <span className={appClasses.label}>contact</span>
-              {contactEmail}
-            </Group>
-          </Anchor>
-        </Stack>
+        <Footer labelClass={appClasses.label} />
       </Container>
     </Box>
   );

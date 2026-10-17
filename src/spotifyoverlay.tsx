@@ -1,6 +1,7 @@
 import { Badge, Button, Group, SimpleGrid, Stack, Table, Text, Title } from '@mantine/core';
 import { IconBrandGithub, IconDownload } from '@tabler/icons-react';
 import { mount } from './render';
+import KofiButton from './KofiButton';
 import Subpage from './Subpage';
 import appClasses from './App.module.css';
 import classes from './Subpage.module.css';
@@ -42,6 +43,7 @@ const steps = [
 mount(
   <Subpage
     back={{ href: '/portfolio/', label: 'Back to portfolio' }}
+    action={<KofiButton />}
     eyebrow="obs plugin"
     title="Spotify Overlay"
     intro="An OBS Studio source that shows the song currently playing in Spotify. I made it for my own streams so I could drop the cropped Spotify window capture."

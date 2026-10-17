@@ -104,7 +104,7 @@ export interface Social {
   live?: LiveCheck;
 }
 
-const github: Social = {
+export const github: Social = {
   name: 'GitHub',
   handle: 'urmamge',
   icon: IconBrandGithub,
@@ -149,3 +149,5 @@ export const urmamgeSocials: Social[] = [
 ];
 
 export const contactEmail = 'contact@matthewhearst.com';
+
+export const kofiUrl = 'https://ko-fi.com/urmamge';

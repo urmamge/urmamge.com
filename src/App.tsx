@@ -1,5 +1,4 @@
 import {
-  Anchor,
   Badge,
   Box,
   Button,
@@ -14,6 +13,7 @@ import {
 } from '@mantine/core';
 import { IconArrowUpRight, IconBrandDiscord, IconClock, IconFileCv, IconMail } from '@tabler/icons-react';
 import type { About } from './about';
+import Footer from './Footer';
 import { contactEmail, type Destination, type Social } from './links';
 import { useLiveStatus } from './live';
 import classes from './App.module.css';
@@ -254,15 +254,7 @@ export default function App({
           {socialsFirst ? placesSection : socialsSection}
         </Stack>
 
-        <Stack align="center" gap="xs" mt={80}>
-          <Anchor href={`mailto:${contactEmail}`} c="dark.3" size="sm" className={classes.footerLink}>
-            <Group gap={6}>
-              <IconMail size={16} />
-              <span className={labelClass}>contact</span>
-              {contactEmail}
-            </Group>
-          </Anchor>
-        </Stack>
+        <Footer labelClass={labelClass} />
       </Container>
     </Box>
   );
