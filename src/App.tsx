@@ -21,6 +21,8 @@ interface AppProps {
   socials: Social[];
   /** Use the Minecraft-style pixel font for small labels. */
   pixelFont?: boolean;
+  /** Show the socials section above "places to go" instead of below it. */
+  socialsFirst?: boolean;
 }
 
 function SkinFace() {
@@ -107,8 +109,40 @@ function SocialCard({ name, handle, icon: Icon, href, labelClass }: Social & { l
   );
 }
 
-export default function App({ name, destinations, socials, pixelFont = false }: AppProps) {
+export default function App({
+  name,
+  destinations,
+  socials,
+  pixelFont = false,
+  socialsFirst = false,
+}: AppProps) {
   const labelClass = pixelFont ? classes.pixel : classes.label;
+
+  const placesSection = (
+    <div>
+      <Text className={labelClass} c="dark.3" size="xs" mb="sm">
+        places to go
+      </Text>
+      <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="lg">
+        {destinations.map((d) => (
+          <DestinationCard key={d.title} {...d} labelClass={labelClass} />
+        ))}
+      </SimpleGrid>
+    </div>
+  );
+
+  const socialsSection = (
+    <Box className={classes.socials}>
+      <Text className={labelClass} c="tie.2" size="xs" mb="sm">
+        socials
+      </Text>
+      <SimpleGrid cols={{ base: 1, xs: socials.length % 3 === 0 ? 3 : 2 }} spacing="md">
+        {socials.map((social) => (
+          <SocialCard key={social.name} {...social} labelClass={labelClass} />
+        ))}
+      </SimpleGrid>
+    </Box>
+  );
 
   return (
     <Box id="top" className={classes.page}>
@@ -124,25 +158,10 @@ export default function App({ name, destinations, socials, pixelFont = false }: 
           </Text>
         </Stack>
 
-        <Text className={labelClass} c="dark.3" size="xs" mb="sm">
-          places to go
-        </Text>
-        <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="lg">
-          {destinations.map((d) => (
-            <DestinationCard key={d.title} {...d} labelClass={labelClass} />
-          ))}
-        </SimpleGrid>
-
-        <Box className={classes.socials} mt={56}>
-          <Text className={labelClass} c="tie.2" size="xs" mb="sm">
-            socials
-          </Text>
-          <SimpleGrid cols={{ base: 1, xs: socials.length % 3 === 0 ? 3 : 2 }} spacing="md">
-            {socials.map((social) => (
-              <SocialCard key={social.name} {...social} labelClass={labelClass} />
-            ))}
-          </SimpleGrid>
-        </Box>
+        <Stack gap={56}>
+          {socialsFirst ? socialsSection : placesSection}
+          {socialsFirst ? placesSection : socialsSection}
+        </Stack>
 
         <Stack align="center" gap="xs" mt={80}>
           <Anchor href={`mailto:${contactEmail}`} c="dark.3" size="sm" className={classes.footerLink}>
