@@ -12,7 +12,6 @@ export default defineConfig({
       input: {
         main: resolve(import.meta.dirname, 'index.html'),
         portfolio: resolve(import.meta.dirname, 'portfolio/index.html'),
-        calorietracker: resolve(import.meta.dirname, 'calorietracker/index.html'),
       },
     },
   },

@@ -73,7 +73,6 @@ function destinationsFor(page: Page): Destination[] {
       : // On the portfolio page, the Portfolio card takes you back to the main page.
         { ...portfolio, href: '/', host: 'matthewhearst.com' },
     overwatchBot,
-    // calorietracker/index.html forwards to the GitHub Pages site.
     { ...calorieTracker, href: '/calorietracker/', host: 'matthewhearst.com/calorietracker' },
     docToAudio,
     spotify,
