@@ -12,6 +12,12 @@
   text-transform: lowercase;
 }
 
+.label {
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .name {
   font-size: clamp(2.5rem, 8vw, 4rem);
   line-height: 1;

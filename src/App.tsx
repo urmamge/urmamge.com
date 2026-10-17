@@ -12,8 +12,15 @@ import {
   Title,
 } from '@mantine/core';
 import { IconArrowUpRight, IconBrandGithub, IconClock } from '@tabler/icons-react';
-import { destinations, type Destination } from './links';
+import type { Destination } from './links';
 import classes from './App.module.css';
+
+interface AppProps {
+  name: string;
+  destinations: Destination[];
+  /** Use the Minecraft-style pixel font for small labels. */
+  pixelFont?: boolean;
+}
 
 function SkinFace() {
   return (
@@ -24,7 +31,14 @@ function SkinFace() {
   );
 }
 
-function DestinationCard({ title, description, icon: Icon, href, host }: Destination) {
+function DestinationCard({
+  title,
+  description,
+  icon: Icon,
+  href,
+  host,
+  labelClass,
+}: Destination & { labelClass: string }) {
   const tba = !href;
   const external = href?.startsWith('http');
 
@@ -44,7 +58,7 @@ function DestinationCard({ title, description, icon: Icon, href, host }: Destina
           <Icon size={26} stroke={1.6} />
         </ThemeIcon>
         {tba ? (
-          <Badge variant="outline" color="gray" leftSection={<IconClock size={12} />} className={classes.pixel}>
+          <Badge variant="outline" color="gray" leftSection={<IconClock size={12} />} className={labelClass}>
             TBA
           </Badge>
         ) : (
@@ -58,34 +72,36 @@ function DestinationCard({ title, description, icon: Icon, href, host }: Destina
       <Text c="dark.2" size="sm" mb="md">
         {description}
       </Text>
-      <Text size="xs" c={tba ? 'dark.3' : 'tie.2'} className={classes.pixel} mt="auto">
+      <Text size="xs" c={tba ? 'dark.3' : 'tie.2'} className={labelClass} mt="auto">
         {host ?? 'coming soon'}
       </Text>
     </Card>
   );
 }
 
-export default function App() {
+export default function App({ name, destinations, pixelFont = false }: AppProps) {
+  const labelClass = pixelFont ? classes.pixel : classes.label;
+
   return (
     <Box id="top" className={classes.page}>
       <Container size="md" py={{ base: 48, sm: 96 }}>
         <Stack align="center" gap="lg" mb={64} ta="center">
           <SkinFace />
-          <Text className={classes.pixel} c="blush.4" size="sm">
+          <Text className={labelClass} c="blush.4" size="sm">
             hi, i'm
           </Text>
-          <Title className={classes.name}>urmamge</Title>
+          <Title className={classes.name}>{name}</Title>
           <Text c="dark.2" maw={460}>
             Things I've built and where to find them. Pick somewhere to go.
           </Text>
         </Stack>
 
-        <Text className={classes.pixel} c="dark.3" size="xs" mb="sm">
+        <Text className={labelClass} c="dark.3" size="xs" mb="sm">
           places to go
         </Text>
         <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="lg">
           {destinations.map((d) => (
-            <DestinationCard key={d.title} {...d} />
+            <DestinationCard key={d.title} {...d} labelClass={labelClass} />
           ))}
         </SimpleGrid>
 
