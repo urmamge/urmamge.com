@@ -5,14 +5,12 @@ import {
   Button,
   Card,
   Container,
-  CopyButton,
   Group,
   SimpleGrid,
   Stack,
   Text,
   ThemeIcon,
   Title,
-  Tooltip,
 } from '@mantine/core';
 import { IconArrowUpRight, IconBrandDiscord, IconClock, IconFileCv, IconMail } from '@tabler/icons-react';
 import type { About } from './about';
@@ -169,16 +167,16 @@ function AboutSection({ about, labelClass }: { about: About; labelClass: string 
         </div>
         {about.contact ? (
           <Group gap="xs">
-            {/* Discord usernames have no profile URL, so the button copies the name instead. */}
-            <CopyButton value={about.contact.discord}>
-              {({ copied, copy }) => (
-                <Tooltip label="Copy my Discord username">
-                  <Button onClick={copy} leftSection={<IconBrandDiscord size={18} />} color="tie.5">
-                    {copied ? 'Copied!' : about.contact!.discord}
-                  </Button>
-                </Tooltip>
-              )}
-            </CopyButton>
+            <Button
+              component="a"
+              href={`https://discord.com/users/${about.contact.discordId}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              leftSection={<IconBrandDiscord size={18} />}
+              color="tie.5"
+            >
+              {about.contact.discord}
+            </Button>
             <Button component="a" href={`mailto:${contactEmail}`} leftSection={<IconMail size={18} />} color="blush">
               Email me
             </Button>

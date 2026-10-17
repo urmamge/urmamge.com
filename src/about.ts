@@ -6,7 +6,12 @@ export interface About {
   /** Link to the CV PDF. Leave undefined to show a "coming soon" placeholder. */
   cvHref?: string;
   /** Show Discord and email contact buttons instead of the CV button. */
-  contact?: { discord: string };
+  contact?: {
+    /** Username shown on the button. */
+    discord: string;
+    /** User ID for the discord.com/users/ profile link (Developer Mode → Copy User ID). */
+    discordId: string;
+  };
 }
 
 /** About section on matthewhearst.com/portfolio */
@@ -38,5 +43,5 @@ export const urmamgeAbout: About = {
   ],
   skillsLabel: 'Software',
   skills: ['DaVinci Resolve'],
-  contact: { discord: 'urmamge' },
+  contact: { discord: 'urmamge', discordId: '401779843353673749' },
 };
