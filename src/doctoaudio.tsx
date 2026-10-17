@@ -2,6 +2,7 @@ import { Badge, Button, Group, SimpleGrid, Stack, Text, Title } from '@mantine/c
 import { IconBrandGithub, IconChevronRight, IconDownload } from '@tabler/icons-react';
 import type { ReactNode } from 'react';
 import { mount } from './render';
+import KofiButton from './KofiButton';
 import Subpage from './Subpage';
 import appClasses from './App.module.css';
 import classes from './Subpage.module.css';
@@ -65,6 +66,7 @@ function Steps({ steps }: { steps: ReactNode[] }) {
 mount(
   <Subpage
     back={{ href: '/portfolio/', label: 'Back to portfolio' }}
+    action={<KofiButton />}
     eyebrow="windows app"
     title="Doc to Audio"
     intro="Right-click a PDF, Word, text or Markdown file in Windows to turn it into an MP3 you can listen to."

@@ -1,12 +1,16 @@
 import { Button, SimpleGrid } from '@mantine/core';
 import { IconClock, IconHeadphones } from '@tabler/icons-react';
 import { mount } from './render';
+import KofiButton from './KofiButton';
 import Subpage from './Subpage';
 import classes from './Subpage.module.css';
 
 /** matthewhearst.com/apps */
 mount(
-  <Subpage back={{ href: '/portfolio/', label: 'Back to portfolio' }} eyebrow="apps" title="Apps" intro="Apps I've made">
+  <Subpage
+    back={{ href: '/portfolio/', label: 'Back to portfolio' }}
+    action={<KofiButton />}
+    eyebrow="apps" title="Apps" intro="Apps I've made">
     <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="lg">
       <Button
         component="a"
