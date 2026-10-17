@@ -10,7 +10,7 @@ mount(
     back={{ href: '/portfolio/', label: 'Back to portfolio' }}
     eyebrow="plugins"
     title="Plugins"
-    intro="Plugins I've made for the software I use to stream and edit."
+    intro="Plugins I've made"
   >
     <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="lg">
       <Button
