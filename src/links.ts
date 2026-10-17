@@ -84,5 +84,6 @@ export const portfolioDestinations: Destination[] = [
     host: 'urmamge.github.io/calorieTracker',
   },
   spotify,
-  portfolio,
+  // On the portfolio page, the Portfolio card takes you back to the main page.
+  { ...portfolio, href: '/', host: 'matthewhearst.com' },
 ];
