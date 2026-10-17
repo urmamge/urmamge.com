@@ -2,7 +2,9 @@ import type { Icon } from '@tabler/icons-react';
 import {
   IconBrandSpotify,
   IconDeviceGamepad2,
+  IconHeadphones,
   IconSalad,
+  IconSchool,
   IconUserCircle,
 } from '@tabler/icons-react';
 
@@ -37,6 +39,21 @@ const spotify: Destination = {
   // TODO: add href once the repo is public
 };
 
+const docToAudio: Destination = {
+  title: 'Doc to Audio',
+  description: 'Right-click a PDF, Word, text or Markdown file in Windows to turn it into an MP3.',
+  icon: IconHeadphones,
+  href: 'https://github.com/urmamge/doc-to-audio',
+  host: 'github.com/urmamge/doc-to-audio',
+};
+
+const dissertation: Destination = {
+  title: 'Final Dissertation',
+  description: 'My final-year university dissertation.',
+  icon: IconSchool,
+  // TODO: add href to the GitHub repo once it's ready
+};
+
 const portfolio = {
   title: 'Portfolio',
   description: 'About me and the things I build.',
@@ -52,7 +69,9 @@ export const homeDestinations: Destination[] = [
     href: '/calorietracker/',
     host: 'matthewhearst.com/calorietracker',
   },
+  docToAudio,
   spotify,
+  dissertation,
   { ...portfolio, href: '/portfolio/', host: 'matthewhearst.com/portfolio' },
 ];
 
