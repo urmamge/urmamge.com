@@ -12,6 +12,7 @@ export default defineConfig({
       input: {
         main: resolve(import.meta.dirname, 'index.html'),
         portfolio: resolve(import.meta.dirname, 'portfolio/index.html'),
+        urmamge: resolve(import.meta.dirname, 'urmamge/index.html'),
       },
     },
   },

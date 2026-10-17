@@ -137,7 +137,7 @@ export default function App({ name, destinations, socials, pixelFont = false }: 
           <Text className={labelClass} c="tie.2" size="xs" mb="sm">
             socials
           </Text>
-          <SimpleGrid cols={{ base: 1, xs: socials.length > 2 ? 3 : 2 }} spacing="md">
+          <SimpleGrid cols={{ base: 1, xs: socials.length % 3 === 0 ? 3 : 2 }} spacing="md">
             {socials.map((social) => (
               <SocialCard key={social.name} {...social} labelClass={labelClass} />
             ))}

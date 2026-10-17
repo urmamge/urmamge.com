@@ -1,5 +1,6 @@
 import type { Icon } from '@tabler/icons-react';
 import {
+  IconBrandGithub,
   IconBrandInstagram,
   IconBrandLinkedin,
   IconBrandSpotify,
@@ -67,7 +68,7 @@ const portfolio = {
   icon: IconUserCircle,
 };
 
-type Page = 'home' | 'portfolio';
+type Page = 'portfolio' | 'urmamge';
 
 /**
  * Cards shown on both pages, in display order: Portfolio first, TBA cards last,
@@ -75,10 +76,10 @@ type Page = 'home' | 'portfolio';
  */
 function destinationsFor(page: Page): Destination[] {
   return [
-    page === 'home'
-      ? { ...portfolio, href: '/portfolio/', host: 'matthewhearst.com/portfolio' }
-      : // On the portfolio page, the Portfolio card takes you back to the main page.
-        { ...portfolio, href: '/', host: 'matthewhearst.com' },
+    // The Portfolio card swaps between the two pages.
+    page === 'portfolio'
+      ? { ...portfolio, href: '/urmamge/', host: 'matthewhearst.com/urmamge' }
+      : { ...portfolio, href: '/portfolio/', host: 'matthewhearst.com/portfolio' },
     overwatchBot,
     { ...calorieTracker, href: '/calorietracker/', host: 'matthewhearst.com/calorietracker' },
     docToAudio,
@@ -87,11 +88,11 @@ function destinationsFor(page: Page): Destination[] {
   ];
 }
 
-/** Main page: matthewhearst.com */
-export const homeDestinations = destinationsFor('home');
-
-/** Portfolio page: matthewhearst.com/portfolio (the original version of the main page) */
+/** Main page: matthewhearst.com/portfolio (matthewhearst.com redirects here) */
 export const portfolioDestinations = destinationsFor('portfolio');
+
+/** matthewhearst.com/urmamge (the original version of the main page) */
+export const urmamgeDestinations = destinationsFor('urmamge');
 
 export interface Social {
   name: string;
@@ -100,8 +101,15 @@ export interface Social {
   href: string;
 }
 
-/** Socials on the main page: matthewhearst.com */
-export const homeSocials: Social[] = [
+const github: Social = {
+  name: 'GitHub',
+  handle: 'urmamge',
+  icon: IconBrandGithub,
+  href: 'https://github.com/urmamge',
+};
+
+/** Socials on the main page: matthewhearst.com/portfolio */
+export const portfolioSocials: Social[] = [
   {
     name: 'Instagram',
     handle: '@matthewhearst1',
@@ -114,13 +122,15 @@ export const homeSocials: Social[] = [
     icon: IconBrandLinkedin,
     href: 'https://www.linkedin.com/in/matthew-hearst-57890b405/',
   },
+  github,
 ];
 
-/** Socials on the portfolio page: matthewhearst.com/portfolio */
-export const portfolioSocials: Social[] = [
+/** Socials on matthewhearst.com/urmamge */
+export const urmamgeSocials: Social[] = [
   { name: 'Twitch', handle: 'urmamge', icon: IconBrandTwitch, href: 'https://www.twitch.tv/urmamge' },
   { name: 'YouTube', handle: '@urmamge', icon: IconBrandYoutube, href: 'https://www.youtube.com/@urmamge' },
   { name: 'X', handle: '@urmamge', icon: IconBrandX, href: 'https://x.com/urmamge' },
+  github,
 ];
 
 export const contactEmail = 'owner@matthewhearst.com';
