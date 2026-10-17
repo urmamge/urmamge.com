@@ -26,7 +26,7 @@ const overwatchBot: Destination = {
   host: 'github.com/urmamge/overwatchbot',
 };
 
-const calorieTracker = {
+const calorieTracker: Destination = {
   title: 'Calorie Tracker',
   description: 'Log meals and keep an eye on daily nutrition.',
   icon: IconSalad,
@@ -73,14 +73,8 @@ function destinationsFor(page: Page): Destination[] {
       : // On the portfolio page, the Portfolio card takes you back to the main page.
         { ...portfolio, href: '/', host: 'matthewhearst.com' },
     overwatchBot,
-    page === 'home'
-      ? // calorietracker/index.html forwards to the GitHub Pages site.
-        { ...calorieTracker, href: '/calorietracker/', host: 'matthewhearst.com/calorietracker' }
-      : {
-          ...calorieTracker,
-          href: 'https://urmamge.github.io/calorieTracker/',
-          host: 'urmamge.github.io/calorieTracker',
-        },
+    // calorietracker/index.html forwards to the GitHub Pages site.
+    { ...calorieTracker, href: '/calorietracker/', host: 'matthewhearst.com/calorietracker' },
     docToAudio,
     spotify,
     dissertation,
