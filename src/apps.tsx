@@ -10,7 +10,10 @@ mount(
   <Subpage
     back={{ href: '/portfolio/', label: 'Back to portfolio' }}
     action={<KofiButton />}
-    eyebrow="apps" title="Apps" intro="Apps I've made">
+    eyebrow="apps"
+    title="Apps"
+    intro="Apps I've made"
+  >
     <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="lg">
       <Button
         component="a"
