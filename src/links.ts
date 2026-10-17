@@ -148,4 +148,4 @@ export const urmamgeSocials: Social[] = [
   github,
 ];
 
-export const contactEmail = 'owner@matthewhearst.com';
+export const contactEmail = 'contact@matthewhearst.com';
