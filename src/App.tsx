@@ -11,7 +11,7 @@ import {
   ThemeIcon,
   Title,
 } from '@mantine/core';
-import { IconArrowUpRight, IconBrandGithub, IconClock, IconMail } from '@tabler/icons-react';
+import { IconArrowUpRight, IconClock, IconMail } from '@tabler/icons-react';
 import { contactEmail, type Destination, type Social } from './links';
 import classes from './App.module.css';
 
@@ -145,19 +145,6 @@ export default function App({ name, destinations, socials, pixelFont = false }: 
         </Box>
 
         <Stack align="center" gap="xs" mt={80}>
-          <Anchor
-            href="https://github.com/urmamge"
-            target="_blank"
-            rel="noopener noreferrer"
-            c="dark.3"
-            size="sm"
-            className={classes.footerLink}
-          >
-            <Group gap={6}>
-              <IconBrandGithub size={16} />
-              github.com/urmamge
-            </Group>
-          </Anchor>
           <Anchor href={`mailto:${contactEmail}`} c="dark.3" size="sm" className={classes.footerLink}>
             <Group gap={6}>
               <IconMail size={16} />
