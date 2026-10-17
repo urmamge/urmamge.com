@@ -20,8 +20,8 @@ import classes from './App.module.css';
 
 interface AppProps {
   name: string;
-  /** Line under the name. */
-  tagline: string;
+  /** Optional line under the name. */
+  tagline?: string;
   /** Optional "about me" section shown between the header and the rest of the page. */
   about?: About;
   destinations: Destination[];
@@ -225,9 +225,11 @@ export default function App({
             hi, i'm
           </Text>
           <Title className={classes.name}>{name}</Title>
-          <Text c="dark.2" maw={520}>
-            {tagline}
-          </Text>
+          {tagline && (
+            <Text c="dark.2" maw={520}>
+              {tagline}
+            </Text>
+          )}
         </Stack>
 
         <Stack gap={56}>
