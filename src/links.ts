@@ -51,8 +51,8 @@ const docToAudio: Destination = {
   title: 'Doc to Audio',
   description: 'Right-click a PDF, Word, text or Markdown file in Windows to turn it into an MP3.',
   icon: IconHeadphones,
-  href: 'https://github.com/urmamge/doc-to-audio',
-  host: 'github.com/urmamge/doc-to-audio',
+  href: '/apps/doctoaudio/',
+  host: 'matthewhearst.com/apps/doctoaudio',
 };
 
 const dissertation: Destination = {
