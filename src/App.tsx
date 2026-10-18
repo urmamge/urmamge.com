@@ -186,8 +186,8 @@ function AboutSection({ about, labelClass }: { about: About; labelClass: string 
             Download CV
           </Button>
         ) : (
-          <Button disabled variant="default" leftSection={<IconFileCv size={18} />}>
-            CV coming soon
+          <Button component="a" href={`mailto:${contactEmail}`} leftSection={<IconFileCv size={18} />} color="blush">
+            Email me for CV
           </Button>
         )}
       </Group>

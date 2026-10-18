@@ -3,7 +3,7 @@ export interface About {
   facts: { label: string; value: string }[];
   skillsLabel: string;
   skills: string[];
-  /** Link to the CV PDF. Leave undefined to show a "coming soon" placeholder. */
+  /** Link to the CV PDF. Leave undefined to show an "Email me for CV" button instead. */
   cvHref?: string;
   /** Show Discord and email contact buttons instead of the CV button. */
   contact?: {
