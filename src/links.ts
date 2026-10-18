@@ -8,6 +8,7 @@ import {
   IconBrandX,
   IconBrandYoutube,
   IconDeviceGamepad2,
+  IconFolderCode,
   IconHeadphones,
   IconSalad,
   IconSchool,
@@ -69,18 +70,27 @@ const portfolio = {
   icon: IconUserCircle,
 };
 
+const repos: Destination = {
+  title: 'Repos',
+  description: 'My GitHub repos.',
+  icon: IconFolderCode,
+  href: '/repos/',
+  host: 'matthewhearst.com/repos',
+};
+
 type Page = 'portfolio' | 'urmamge';
 
 /**
- * Cards shown on both pages, in display order: Portfolio first, TBA cards last,
+ * Cards shown on both pages, in display order: Portfolio first, then Repos, TBA cards last,
  * Final Dissertation at the very end. Add new cards here so both pages get them.
  */
 function destinationsFor(page: Page): Destination[] {
   return [
     // The Portfolio card swaps between the two pages.
     page === 'portfolio'
-      ? { ...portfolio, href: '/urmamge/', host: 'matthewhearst.com/urmamge' }
+      ? { ...portfolio, title: 'Online Portfolio', href: '/urmamge/', host: 'matthewhearst.com/urmamge' }
       : { ...portfolio, href: '/portfolio/', host: 'matthewhearst.com/portfolio' },
+    repos,
     overwatchBot,
     { ...calorieTracker, href: '/calorietracker/', host: 'matthewhearst.com/calorietracker' },
     docToAudio,
