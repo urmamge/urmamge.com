@@ -120,6 +120,10 @@ mount(
           </Table>
         </Table.ScrollContainer>
       </div>
+
+      <Text c="dark.3" size="xs">
+        Fan-made bot, not affiliated with or endorsed by Blizzard Entertainment. Overwatch is a trademark of Blizzard Entertainment, Inc.
+      </Text>
     </Stack>
   </Subpage>,
 );
