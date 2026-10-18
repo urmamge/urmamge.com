@@ -1,11 +1,14 @@
-import { Anchor, Button, Group, Stack, Table, Text, Title } from '@mantine/core';
+import { Anchor, Button, Group, List, Stack, Table, Text, Title } from '@mantine/core';
 import { IconBrandDiscord, IconBrandGithub } from '@tabler/icons-react';
+import { useChangelog } from './changelog';
 import { mount } from './render';
 import KofiButton from './KofiButton';
 import Subpage from './Subpage';
 import classes from './Subpage.module.css';
 
 const repo = 'https://github.com/urmamge/overwatchbot';
+const changelogFile = `${repo}/blob/main/CHANGELOG.txt`;
+const changelogRaw = 'https://raw.githubusercontent.com/urmamge/overwatchbot/main/CHANGELOG.txt';
 const invite = 'https://discord.com/oauth2/authorize?client_id=1419678705357160600';
 
 const features = [
@@ -16,6 +19,7 @@ const features = [
   'Turn on /autopost to post new patch notes in a channel as soon as they’re out, with an optional role ping',
   'If the newest patch doesn’t have what you asked for, it looks back through up to 6 months of patch notes',
   'Add it to a server, or to your own Discord account so you can use /patchnotes in DMs and group chats too',
+  'Type /stats to see hero win rates, pick rates and ban rates for your input and region, filtered by mode, map or rank',
   'Reads the patch notes straight from Blizzard’s website, at most once every 15 minutes',
 ];
 
@@ -29,7 +33,86 @@ const commands = [
   ['/patchnotes maps', 'Map updates, with before and after screenshots'],
   ['/autopost on channel:#patch-notes', 'Posts new patch notes in that channel. Add ping:@role to ping a role. Needs Manage Server'],
   ['/autopost off', 'Stops posting new patch notes'],
+  ['/autopost status', 'Shows where new patch notes are posted'],
+  ['/stats tank input:Controller region:Europe', 'The top 3 Tank heroes by win rate. Add sort to rank them by pick rate or ban rate instead'],
+  ['/stats damage', 'The top 3 Damage heroes, with the same options as /stats tank'],
+  ['/stats support', 'The top 3 Support heroes, with the same options as /stats tank'],
+  ['/stats hero name:Juno', 'One hero’s win rate, pick rate and ban rate'],
 ];
+
+/** A list item, with a leading "/command:" shown in the slash command style. */
+function ChangelogItem({ item }: { item: string }) {
+  const command = /^(\/[^:]+):\s*(.*)$/.exec(item);
+  if (!command) return <>{item}</>;
+  return (
+    <>
+      <span className={classes.slashCommand}>{command[1]}</span> {command[2]}
+    </>
+  );
+}
+
+/** Pulled live from CHANGELOG.txt in the bot's repo, so it updates whenever that file does. */
+function Changelog() {
+  const changelog = useChangelog(changelogRaw);
+
+  return (
+    <div className={classes.panel}>
+      <Group justify="space-between" align="baseline" mb="md">
+        <Title order={2} fz="h4">
+          Changelog
+        </Title>
+        <Anchor href={changelogFile} target="_blank" rel="noopener noreferrer" c="dark.2" size="xs">
+          View on GitHub
+        </Anchor>
+      </Group>
+      {changelog.status === 'loading' && (
+        <Text c="dark.2" size="sm">
+          Loading changelog…
+        </Text>
+      )}
+      {changelog.status === 'error' && (
+        <Text c="dark.2" size="sm">
+          Couldn’t load the changelog.{' '}
+          <Anchor href={changelogFile} target="_blank" rel="noopener noreferrer" c="blush.4" inherit>
+            Read it on GitHub
+          </Anchor>
+          .
+        </Text>
+      )}
+      {changelog.status === 'ready' && (
+        <Stack gap="xl">
+          {changelog.versions.map(({ version, blocks }) => (
+            <div key={version}>
+              <Text c="blush.4" fw={600} mb="xs">
+                Version {version}
+              </Text>
+              <Stack gap="sm">
+                {blocks.map((block, i) => (
+                  <div key={i}>
+                    {block.text && (
+                      <Text c="dark.1" size="sm">
+                        {block.text}
+                      </Text>
+                    )}
+                    {block.items.length > 0 && (
+                      <List c="dark.1" size="sm" spacing={4} mt={block.text ? 6 : 0}>
+                        {block.items.map((item) => (
+                          <List.Item key={item}>
+                            <ChangelogItem item={item} />
+                          </List.Item>
+                        ))}
+                      </List>
+                    )}
+                  </div>
+                ))}
+              </Stack>
+            </div>
+          ))}
+        </Stack>
+      )}
+    </div>
+  );
+}
 
 /** matthewhearst.com/bots/overwatchbot */
 mount(
@@ -120,6 +203,8 @@ mount(
           </Table>
         </Table.ScrollContainer>
       </div>
+
+      <Changelog />
 
       <Text c="dark.3" size="xs">
         Fan-made bot, not affiliated with or endorsed by Blizzard Entertainment. Overwatch is a trademark of Blizzard Entertainment, Inc.{' '}
