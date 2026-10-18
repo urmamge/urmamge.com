@@ -133,13 +133,30 @@ function AboutSection({ about, labelClass }: { about: About; labelClass: string 
       <Text className={labelClass} c="blush.2" size="xs" mb="sm">
         about me
       </Text>
-      <Stack gap="sm" mb="lg">
-        {about.paragraphs.map((paragraph) => (
-          <Text key={paragraph} c="dark.1">
-            {paragraph}
-          </Text>
-        ))}
-      </Stack>
+      <Group align="flex-start" justify="space-between" gap="lg" mb="lg">
+        <Stack gap="sm" className={classes.aboutText}>
+          {about.paragraphs.map((paragraph) => (
+            <Text key={paragraph} c="dark.1">
+              {paragraph}
+            </Text>
+          ))}
+        </Stack>
+
+        {about.aka && (
+          <div className={classes.aka}>
+            <Text className={labelClass} c="dark.3" size="xs" mb={6}>
+              other names you may know me by
+            </Text>
+            <Group gap="xs">
+              {about.aka.map((name) => (
+                <Badge key={name} size="lg" radius="sm" className={classes.skill}>
+                  {name}
+                </Badge>
+              ))}
+            </Group>
+          </div>
+        )}
+      </Group>
 
       <SimpleGrid cols={{ base: 1, xs: about.facts.length }} spacing="md" mb="lg">
         {about.facts.map(({ label, value }) => (

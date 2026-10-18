@@ -3,6 +3,8 @@ export interface About {
   facts: { label: string; value: string }[];
   skillsLabel: string;
   skills: string[];
+  /** Other names I go by, shown beside the about text. Leave undefined to hide the section. */
+  aka?: string[];
   /** Link to the CV PDF. Leave undefined to show an "Email me for CV" button instead. */
   cvHref?: string;
   /** Show Discord and email contact buttons instead of the CV button. */
@@ -43,5 +45,7 @@ export const urmamgeAbout: About = {
   ],
   skillsLabel: 'Software',
   skills: ['DaVinci Resolve'],
+  // Add a name to the end of this list to show it on the page
+  aka: ['bumblebee', 'umi', 'Jermenlerbit'],
   contact: { discord: 'urmamge', discordId: '401779843353673749' },
 };

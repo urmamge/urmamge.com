@@ -165,6 +165,17 @@
   border: 1px solid rgba(254, 234, 222, 0.16);
 }
 
+/* The about text takes the space left over, so the "other names" box sits at the far end. */
+.aboutText {
+  flex: 1 1 320px;
+  min-width: 0;
+}
+
+/* Wraps under the about text when there isn't room beside it. */
+.aka {
+  flex: 0 1 220px;
+}
+
 .skill {
   background: rgba(254, 234, 222, 0.1);
   color: var(--mantine-color-blush-1);
