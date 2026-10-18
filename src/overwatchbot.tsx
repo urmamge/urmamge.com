@@ -1,4 +1,4 @@
-import { Button, Group, Stack, Table, Text, Title } from '@mantine/core';
+import { Anchor, Button, Group, Stack, Table, Text, Title } from '@mantine/core';
 import { IconBrandDiscord, IconBrandGithub } from '@tabler/icons-react';
 import { mount } from './render';
 import KofiButton from './KofiButton';
@@ -122,7 +122,14 @@ mount(
       </div>
 
       <Text c="dark.3" size="xs">
-        Fan-made bot, not affiliated with or endorsed by Blizzard Entertainment. Overwatch is a trademark of Blizzard Entertainment, Inc.
+        Fan-made bot, not affiliated with or endorsed by Blizzard Entertainment. Overwatch is a trademark of Blizzard Entertainment, Inc.{' '}
+        <Anchor href="/bots/overwatchbot/privacy-policy/" c="dark.2" inherit>
+          Privacy Policy
+        </Anchor>{' '}
+        ·{' '}
+        <Anchor href="/bots/overwatchbot/terms-of-service/" c="dark.2" inherit>
+          Terms of Service
+        </Anchor>
       </Text>
     </Stack>
   </Subpage>,

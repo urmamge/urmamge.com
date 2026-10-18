@@ -20,6 +20,8 @@ export default defineConfig({
         doctoaudio: resolve(import.meta.dirname, 'apps/doctoaudio/index.html'),
         bots: resolve(import.meta.dirname, 'bots/index.html'),
         overwatchbot: resolve(import.meta.dirname, 'bots/overwatchbot/index.html'),
+        overwatchbotPrivacy: resolve(import.meta.dirname, 'bots/overwatchbot/privacy-policy/index.html'),
+        overwatchbotTerms: resolve(import.meta.dirname, 'bots/overwatchbot/terms-of-service/index.html'),
         repos: resolve(import.meta.dirname, 'repos/index.html'),
       },
     },
