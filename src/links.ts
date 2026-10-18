@@ -1,5 +1,6 @@
 import type { Icon } from '@tabler/icons-react';
 import {
+  IconBrandDiscord,
   IconBrandGithub,
   IconBrandInstagram,
   IconBrandLinkedin,
@@ -155,7 +156,7 @@ export const urmamgeSocials: Social[] = [
     live: { platform: 'twitch', channel: 'urmamge' },
   },
   { name: 'X', handle: '@urmamge', icon: IconBrandX, href: 'https://x.com/urmamge' },
-  github,
+  { name: 'Discord', handle: 'urmamge', icon: IconBrandDiscord, href: 'https://discord.gg/T8NVaNEfy8' },
 ];
 
 export const contactEmail = 'contact@matthewhearst.com';
