@@ -12,7 +12,7 @@ mount(
     updated="18 October 2026"
   >
     <LegalText>
-      These terms cover your use of Overwatch Bot (“the bot”), which is run by Matthew Hearst. By adding or using the bot, you agree to them. If you
+      These terms cover your use of Overwatch Bot (“the bot”), which is run by urmamge Productions (Matthew Hearst). By adding or using the bot, you agree to them. If you
       don’t agree, please don’t use the bot.
     </LegalText>
 
@@ -43,7 +43,7 @@ mount(
 
     <LegalSection heading="Liability">
       <LegalText>
-        As far as the law allows, Matthew Hearst isn’t liable for any loss or damage that comes from using, or not being able to use, the bot.
+        As far as the law allows, urmamge Productions isn’t liable for any loss or damage that comes from using, or not being able to use, the bot.
       </LegalText>
     </LegalSection>
 

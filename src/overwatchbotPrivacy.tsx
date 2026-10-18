@@ -14,7 +14,7 @@ mount(
     updated="18 October 2026"
   >
     <LegalText>
-      This policy explains what information Overwatch Bot (“the bot”) uses and what happens to it. The bot is run by Matthew Hearst. If you have a
+      This policy explains what information Overwatch Bot (“the bot”) uses and what happens to it. The bot is run by urmamge Productions (Matthew Hearst). If you have a
       question, email {email}.
     </LegalText>
 
