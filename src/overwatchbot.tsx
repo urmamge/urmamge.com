@@ -10,7 +10,7 @@ const invite = 'https://discord.com/oauth2/authorize?client_id=14196787053571606
 
 const features = [
   'Type /patchnotes to see the latest hero changes, for one role or one hero, with hero names suggested as you type',
-  'Pick a type to see Stadium changes, hotfixes, bug fixes, general changes or map changes instead, and filter Stadium changes by role too',
+  'See Stadium changes, hotfixes, bug fixes, general changes or map changes instead, and filter Stadium changes by role too',
   'Replies look like the patch notes page: hero portraits, ability names, developer comments and a color for each role',
   'Long patch notes get page buttons instead of a wall of messages, plus a button to open them on Blizzard’s site',
   'Turn on /autopost to post new patch notes in a channel as soon as they’re out, with an optional role ping',
@@ -20,13 +20,13 @@ const features = [
 ];
 
 const commands = [
-  ['/patchnotes role:Tank', 'The latest Tank hero changes'],
-  ['/patchnotes hero:Juno', 'Juno’s latest changes'],
-  ['/patchnotes type:Stadium role:Support', 'The latest Stadium changes for Support heroes'],
-  ['/patchnotes type:Hotfixes', 'The newest hotfix'],
-  ['/patchnotes type:Bug fixes hero:Hanzo', 'Hanzo’s latest bug fixes'],
-  ['/patchnotes type:General changes', 'Events, modes and other changes that aren’t about one hero'],
-  ['/patchnotes type:Map changes', 'Map updates, with before and after screenshots'],
+  ['/patchnotes heroes', 'The latest hero changes. Add role:Tank, role:Damage or role:Support for one role'],
+  ['/patchnotes hero name:Juno', 'Juno’s latest changes'],
+  ['/patchnotes stadium', 'The latest Stadium changes. Add a role to see that role’s heroes'],
+  ['/patchnotes hotfix', 'The newest hotfix'],
+  ['/patchnotes bugfixes', 'The latest bug fixes'],
+  ['/patchnotes general', 'Events, modes and other changes that aren’t about one hero'],
+  ['/patchnotes maps', 'Map updates, with before and after screenshots'],
   ['/autopost on channel:#patch-notes', 'Posts new patch notes in that channel. Add ping:@role to ping a role. Needs Manage Server'],
   ['/autopost off', 'Stops posting new patch notes'],
 ];
@@ -43,7 +43,7 @@ mount(
     <Stack gap={48}>
       <div className={classes.chatPreview} aria-label="Preview of the bot replying to /patchnotes" role="img">
         <div className={classes.chatCommand}>
-          <span className={classes.chatCommandName}>/patchnotes</span> type: Stadium role: Tank
+          <span className={classes.chatCommandName}>/patchnotes stadium</span> role: Tank
         </div>
         <div className={classes.chatMessage}>
           <div className={classes.chatAvatar} />
@@ -99,9 +99,6 @@ mount(
         <Title order={2} fz="h4" mb="md">
           Commands
         </Title>
-        <Text c="dark.2" size="sm" mb="md">
-          Every /patchnotes option is optional, so you can mix type, role and hero however you like.
-        </Text>
         <Table.ScrollContainer minWidth={480}>
           <Table verticalSpacing="xs" c="dark.1" fz="sm">
             <Table.Thead>
