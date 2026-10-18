@@ -1,4 +1,4 @@
-import { Button, Group, Stack, Text, Title } from '@mantine/core';
+import { Button, Group, Stack, Table, Text, Title } from '@mantine/core';
 import { IconBrandDiscord, IconBrandGithub } from '@tabler/icons-react';
 import { mount } from './render';
 import KofiButton from './KofiButton';
@@ -9,10 +9,26 @@ const repo = 'https://github.com/urmamge/overwatchbot';
 const invite = 'https://discord.com/oauth2/authorize?client_id=1419678705357160600';
 
 const features = [
-  'Type /patchnotes and pick Tank, Damage or Support to see that role’s hero changes from the latest Overwatch patch notes',
-  'Add it to a server, or to your own Discord account so you can use it in DMs and group chats too',
-  'Long patch notes are split across several messages so nothing gets cut off',
+  'Type /patchnotes to see the latest hero changes, for one role or one hero, with hero names suggested as you type',
+  'Pick a type to see Stadium changes, hotfixes, bug fixes, general changes or map changes instead, and filter Stadium changes by role too',
+  'Replies look like the patch notes page: hero portraits, ability names, developer comments and a color for each role',
+  'Long patch notes get page buttons instead of a wall of messages, plus a button to open them on Blizzard’s site',
+  'Turn on /autopost to post new patch notes in a channel as soon as they’re out, with an optional role ping',
+  'If the newest patch doesn’t have what you asked for, it looks back through up to 6 months of patch notes',
+  'Add it to a server, or to your own Discord account so you can use /patchnotes in DMs and group chats too',
   'Reads the patch notes straight from Blizzard’s website, at most once every 15 minutes',
+];
+
+const commands = [
+  ['/patchnotes role:Tank', 'The latest Tank hero changes'],
+  ['/patchnotes hero:Juno', 'Juno’s latest changes'],
+  ['/patchnotes type:Stadium role:Support', 'The latest Stadium changes for Support heroes'],
+  ['/patchnotes type:Hotfixes', 'The newest hotfix'],
+  ['/patchnotes type:Bug fixes hero:Hanzo', 'Hanzo’s latest bug fixes'],
+  ['/patchnotes type:General changes', 'Events, modes and other changes that aren’t about one hero'],
+  ['/patchnotes type:Map changes', 'Map updates, with before and after screenshots'],
+  ['/autopost on channel:#patch-notes', 'Posts new patch notes in that channel. Add ping:@role to ping a role. Needs Manage Server'],
+  ['/autopost off', 'Stops posting new patch notes'],
 ];
 
 /** matthewhearst.com/bots/overwatchbot */
@@ -22,27 +38,36 @@ mount(
     action={<KofiButton />}
     eyebrow="discord bot"
     title="Overwatch Bot"
-    intro="A Discord bot that posts the hero changes for Tank, Damage or Support from the latest Overwatch patch notes."
+    intro="A Discord bot that shows the latest Overwatch patch notes, for one role, one hero, Stadium, hotfixes, bug fixes or maps, and can post new patch notes in your server as they come out."
   >
     <Stack gap={48}>
       <div className={classes.chatPreview} aria-label="Preview of the bot replying to /patchnotes" role="img">
         <div className={classes.chatCommand}>
-          <span className={classes.chatCommandName}>/patchnotes</span> role: Support
+          <span className={classes.chatCommandName}>/patchnotes</span> type: Stadium role: Tank
         </div>
         <div className={classes.chatMessage}>
           <div className={classes.chatAvatar} />
-          <div style={{ minWidth: 0 }}>
+          <div style={{ minWidth: 0, flex: 1 }}>
             <div className={classes.chatAuthor}>
               Overwatch Bot <span className={classes.chatTag}>APP</span>
             </div>
-            <div className={classes.chatBody}>
-              <b>Overwatch 2 Retail Patch Notes</b>
-              <br />
-              Support
-              <br />
-              Hero name
-              <br />
-              Ability changes…
+            <div className={classes.chatEmbed}>
+              <div style={{ minWidth: 0 }}>
+                <div className={classes.chatEmbedAuthor}>Stadium · Tank</div>
+                <div className={classes.chatEmbedTitle}>D.Va</div>
+                <div className={classes.chatBody}>
+                  <b>MEKA Ejector - Power</b>
+                  <br />• Ultimate Charge cost reduction increased to 60% (Up from 50%).
+                </div>
+                <div className={classes.chatEmbedFooter}>Overwatch Retail Patch Notes – September 8, 2026</div>
+              </div>
+              <div className={classes.chatEmbedThumb} />
+            </div>
+            <div className={classes.chatButtons}>
+              <span className={classes.chatButton}>◀ Previous</span>
+              <span className={classes.chatButton}>Page 1/2</span>
+              <span className={classes.chatButton}>Next ▶</span>
+              <span className={classes.chatButton}>Open patch notes ↗</span>
             </div>
           </div>
         </div>
@@ -68,6 +93,35 @@ mount(
             </Text>
           ))}
         </Stack>
+      </div>
+
+      <div className={classes.panel}>
+        <Title order={2} fz="h4" mb="md">
+          Commands
+        </Title>
+        <Text c="dark.2" size="sm" mb="md">
+          Every /patchnotes option is optional, so you can mix type, role and hero however you like.
+        </Text>
+        <Table.ScrollContainer minWidth={480}>
+          <Table verticalSpacing="xs" c="dark.1" fz="sm">
+            <Table.Thead>
+              <Table.Tr>
+                <Table.Th>Command</Table.Th>
+                <Table.Th>What it does</Table.Th>
+              </Table.Tr>
+            </Table.Thead>
+            <Table.Tbody>
+              {commands.map(([command, description]) => (
+                <Table.Tr key={command}>
+                  <Table.Td>
+                    <span className={classes.slashCommand}>{command}</span>
+                  </Table.Td>
+                  <Table.Td>{description}</Table.Td>
+                </Table.Tr>
+              ))}
+            </Table.Tbody>
+          </Table>
+        </Table.ScrollContainer>
       </div>
     </Stack>
   </Subpage>,

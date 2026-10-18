@@ -28,7 +28,7 @@ export interface Destination {
 
 const overwatchBot: Destination = {
   title: 'Overwatch Bot',
-  description: 'Discord bot that posts the latest Overwatch hero changes for a role.',
+  description: 'Discord bot that shows the latest Overwatch patch notes and posts new ones in your server.',
   icon: IconDeviceGamepad2,
   href: '/bots/overwatchbot/',
   host: 'matthewhearst.com/bots/overwatchbot',
