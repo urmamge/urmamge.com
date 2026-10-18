@@ -18,6 +18,8 @@ export default defineConfig({
         davinci: resolve(import.meta.dirname, 'plugins/davinci-placeholder/index.html'),
         apps: resolve(import.meta.dirname, 'apps/index.html'),
         doctoaudio: resolve(import.meta.dirname, 'apps/doctoaudio/index.html'),
+        bots: resolve(import.meta.dirname, 'bots/index.html'),
+        overwatchbot: resolve(import.meta.dirname, 'bots/overwatchbot/index.html'),
         repos: resolve(import.meta.dirname, 'repos/index.html'),
       },
     },

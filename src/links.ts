@@ -28,10 +28,10 @@ export interface Destination {
 
 const overwatchBot: Destination = {
   title: 'Overwatch Bot',
-  description: 'A Discord bot for Overwatch.',
+  description: 'Discord bot that posts the latest Overwatch hero changes for a role.',
   icon: IconDeviceGamepad2,
-  href: 'https://github.com/urmamge/overwatchbot',
-  host: 'github.com/urmamge/overwatchbot',
+  href: '/bots/overwatchbot/',
+  host: 'matthewhearst.com/bots/overwatchbot',
 };
 
 const calorieTracker: Destination = {

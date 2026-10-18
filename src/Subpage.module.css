@@ -147,3 +147,60 @@
     padding: 6px 8px;
   }
 }
+
+/* A mock of a Discord chat: the /patchnotes command and the bot's reply. */
+.chatPreview {
+  width: min(440px, 100%);
+  padding: 16px;
+  background: #313338;
+  border-radius: var(--mantine-radius-md);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+  font-family: 'gg sans', 'Segoe UI', system-ui, sans-serif;
+  font-size: 14px;
+  color: #dbdee1;
+}
+
+.chatCommand {
+  margin: 0 0 6px 56px;
+  font-size: 13px;
+  color: #b5bac1;
+}
+
+.chatCommandName {
+  color: #c9cdfb;
+}
+
+.chatMessage {
+  display: flex;
+  gap: 16px;
+}
+
+.chatAvatar {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--mantine-color-blush-4), var(--mantine-color-tie-5));
+}
+
+.chatAuthor {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #fff;
+  font-weight: 600;
+}
+
+.chatTag {
+  padding: 0 4px;
+  border-radius: 3px;
+  background: #5865f2;
+  color: #fff;
+  font-size: 10px;
+  line-height: 15px;
+}
+
+.chatBody {
+  margin-top: 2px;
+  line-height: 1.4;
+}
