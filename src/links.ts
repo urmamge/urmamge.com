@@ -156,7 +156,7 @@ export const urmamgeSocials: Social[] = [
     live: { platform: 'twitch', channel: 'urmamge' },
   },
   { name: 'X', handle: '@urmamge', icon: IconBrandX, href: 'https://x.com/urmamge' },
-  { name: 'Discord', handle: 'urmamge', icon: IconBrandDiscord, href: 'https://discord.gg/T8NVaNEfy8' },
+  { name: 'Discord', handle: "urmamge's server", icon: IconBrandDiscord, href: 'https://discord.gg/T8NVaNEfy8' },
 ];
 
 export const contactEmail = 'contact@matthewhearst.com';
