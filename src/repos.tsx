@@ -5,7 +5,7 @@ import KofiButton from './KofiButton';
 import Subpage from './Subpage';
 import classes from './Subpage.module.css';
 
-/** Repos under github.com/urmamge, minus leavingBot, website and A2-Coursework. */
+/** Repos under github.com/urmamge, minus website and A2-Coursework. */
 const repos = [
   'urmamge.github.io',
   'textbasedgame',
@@ -14,6 +14,7 @@ const repos = [
   'davinci-beat-marker-plugin',
   'obs-spotify-now-playing',
   'overwatchbot',
+  'leavingBot',
   'calorietracker',
 ];
 

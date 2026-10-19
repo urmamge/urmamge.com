@@ -1,5 +1,6 @@
 import type { Icon } from '@tabler/icons-react';
 import {
+  IconApps,
   IconBrandDiscord,
   IconBrandGithub,
   IconBrandInstagram,
@@ -12,6 +13,8 @@ import {
   IconFolderCode,
   IconHeadphones,
   IconMetronome,
+  IconPuzzle,
+  IconRobot,
   IconSalad,
   IconSchool,
   IconUserCircle,
@@ -115,6 +118,20 @@ export const portfolioDestinations = destinationsFor('portfolio');
 
 /** matthewhearst.com/urmamge (the original version of the main page) */
 export const urmamgeDestinations = destinationsFor('urmamge');
+
+export interface Section {
+  name: string;
+  icon: Icon;
+  href: string;
+}
+
+/** The listing pages, shown at the bottom of both main pages. */
+export const sections: Section[] = [
+  { name: 'Plugins', icon: IconPuzzle, href: '/plugins/' },
+  { name: 'Bots', icon: IconRobot, href: '/bots/' },
+  { name: 'Apps', icon: IconApps, href: '/apps/' },
+  { name: 'Repos', icon: IconFolderCode, href: '/repos/' },
+];
 
 export interface Social {
   name: string;

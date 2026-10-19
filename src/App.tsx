@@ -14,7 +14,7 @@ import {
 import { IconArrowUpRight, IconBrandDiscord, IconClock, IconFileCv, IconMail } from '@tabler/icons-react';
 import type { About } from './about';
 import Footer from './Footer';
-import { contactEmail, type Destination, type Social } from './links';
+import { contactEmail, sections, type Destination, type Section, type Social } from './links';
 import { useLiveStatus } from './live';
 import classes from './App.module.css';
 
@@ -121,6 +121,20 @@ function SocialCard({ name, handle, icon: Icon, href, live, labelClass }: Social
             {handle}
           </Text>
         </div>
+        <IconArrowUpRight className={classes.arrow} size={20} style={{ marginLeft: 'auto', flexShrink: 0 }} />
+      </Group>
+    </Card>
+  );
+}
+
+function SectionCard({ name, icon: Icon, href }: Section) {
+  return (
+    <Card component="a" href={href} className={classes.card} padding="md" radius="lg">
+      <Group gap="md" wrap="nowrap">
+        <ThemeIcon size={40} radius="md" className={classes.icon}>
+          <Icon size={22} stroke={1.6} />
+        </ThemeIcon>
+        <Text fw={600}>{name}</Text>
         <IconArrowUpRight className={classes.arrow} size={20} style={{ marginLeft: 'auto', flexShrink: 0 }} />
       </Group>
     </Card>
@@ -269,6 +283,16 @@ export default function App({
           {about && <AboutSection about={about} labelClass={labelClass} />}
           {socialsFirst ? socialsSection : placesSection}
           {socialsFirst ? placesSection : socialsSection}
+          <div>
+            <Text className={labelClass} c="dark.3" size="xs" mb="sm">
+              everything i've made
+            </Text>
+            <SimpleGrid cols={{ base: 1, xs: 2, sm: 4 }} spacing="md">
+              {sections.map((section) => (
+                <SectionCard key={section.name} {...section} />
+              ))}
+            </SimpleGrid>
+          </div>
         </Stack>
 
         <Footer labelClass={labelClass} />
