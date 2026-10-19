@@ -11,6 +11,7 @@ import {
   IconDeviceGamepad2,
   IconFolderCode,
   IconHeadphones,
+  IconMetronome,
   IconSalad,
   IconSchool,
   IconUserCircle,
@@ -47,6 +48,14 @@ const spotify: Destination = {
   icon: IconBrandSpotify,
   href: '/plugins/spotifyoverlay/',
   host: 'matthewhearst.com/plugins/spotifyoverlay',
+};
+
+const beatMarker: Destination = {
+  title: 'DaVinci Beat Marker',
+  description: 'DaVinci Resolve plugin that puts beat and bar markers on your song clip so cuts snap to the music.',
+  icon: IconMetronome,
+  href: '/plugins/beatmarker/',
+  host: 'matthewhearst.com/plugins/beatmarker',
 };
 
 const docToAudio: Destination = {
@@ -96,6 +105,7 @@ function destinationsFor(page: Page): Destination[] {
     { ...calorieTracker, href: '/calorietracker/', host: 'matthewhearst.com/calorietracker' },
     docToAudio,
     spotify,
+    beatMarker,
     dissertation,
   ];
 }

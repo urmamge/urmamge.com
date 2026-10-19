@@ -14,4 +14,5 @@ Built with Vite, React, TypeScript and [Mantine](https://mantine.dev).
 | `/calorietracker/` | Personal website to track my calorie history remotely |
 | `/bots/overwatchbot/` | Overwatch Bot, a Discord bot for Overwatch patch notes |
 | `/plugins/spotifyoverlay/` | Spotify Now Playing, an OBS plugin that shows the song playing in Spotify |
+| `/plugins/beatmarker/` | DaVinci Beat Marker, a DaVinci Resolve plugin that puts beat and bar markers on your song clip |
 | `/apps/doctoaudio/` | Doc to Audio, which turns a PDF, Word, text or Markdown file into an MP3 from the right-click menu |

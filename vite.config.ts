@@ -15,7 +15,7 @@ export default defineConfig({
         urmamge: resolve(import.meta.dirname, 'urmamge/index.html'),
         plugins: resolve(import.meta.dirname, 'plugins/index.html'),
         spotifyoverlay: resolve(import.meta.dirname, 'plugins/spotifyoverlay/index.html'),
-        davinci: resolve(import.meta.dirname, 'plugins/davinci-placeholder/index.html'),
+        beatmarker: resolve(import.meta.dirname, 'plugins/beatmarker/index.html'),
         apps: resolve(import.meta.dirname, 'apps/index.html'),
         doctoaudio: resolve(import.meta.dirname, 'apps/doctoaudio/index.html'),
         bots: resolve(import.meta.dirname, 'bots/index.html'),
