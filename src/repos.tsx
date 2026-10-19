@@ -11,6 +11,7 @@ const repos = [
   'textbasedgame',
   'RSRS',
   'doc-to-audio',
+  'davinci-beat-marker-plugin',
   'obs-spotify-now-playing',
   'overwatchbot',
   'calorietracker',

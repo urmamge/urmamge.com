@@ -8,8 +8,8 @@ import appClasses from './App.module.css';
 import classes from './Subpage.module.css';
 
 const repo = 'https://github.com/urmamge/davinci-beat-marker-plugin';
-/** It's a set of scripts with no build step, so the download is the repo itself. */
-const download = `${repo}/archive/refs/heads/main.zip`;
+/** The repo's newest release, where the zip is attached. */
+const download = `${repo}/releases/latest`;
 
 /** Four bars of four beats for the preview; the first beat of each bar is a downbeat. */
 const previewBeats = Array.from({ length: 16 }, (_, i) => i % 4 === 0);
@@ -95,7 +95,7 @@ mount(
       </div>
 
       <Group gap="sm">
-        <Button component="a" href={download} color="blush" autoContrast size="md" leftSection={<IconDownload size={18} />}>
+        <Button component="a" href={download} target="_blank" rel="noopener noreferrer" color="blush" autoContrast size="md" leftSection={<IconDownload size={18} />}>
           Download Beat Marker
         </Button>
         <Button component="a" href={repo} target="_blank" rel="noopener noreferrer" color="tie.5" size="md" leftSection={<IconBrandGithub size={18} />}>
