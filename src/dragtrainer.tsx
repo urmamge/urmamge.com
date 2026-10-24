@@ -144,6 +144,10 @@ mount(
               </Text>
             ))}
           </Stack>
+          <Text c="dark.2" size="sm" mt="md">
+            <b>Work in progress:</b> hand tracking is still being improved, with better optimisation and bug fixes coming
+            in future updates.
+          </Text>
           <Button component="a" href="/apps/dragtrainer/handtracking/" color="tie.5" size="sm" mt="lg" leftSection={<IconHandFinger size={16} />}>
             How it works
           </Button>

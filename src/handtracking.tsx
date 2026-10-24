@@ -168,6 +168,11 @@ mount(
     intro="Drag Trainer v1.1 can watch your hand through a camera and tell you what your finger did on every drag. Here’s how it does that, without the maths."
   >
     <Stack gap={48}>
+      <Text c="dark.2" size="sm" maw={640}>
+        <b>Work in progress:</b> hand tracking is still being improved, with better optimisation and bug fixes coming in
+        future updates.
+      </Text>
+
       <Stack gap="lg">
         {steps.map((step, i) => (
           <div key={step.title} className={classes.panel}>
