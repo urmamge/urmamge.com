@@ -301,3 +301,13 @@
     repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.22) 0 2px, transparent 2px 5px) center / 100% 60% no-repeat,
     #2e5a4a;
 }
+
+/* A screenshot of an app, framed like the panels. */
+.screenshot {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--mantine-radius-lg);
+  border: 1px solid rgba(254, 234, 222, 0.16);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+}

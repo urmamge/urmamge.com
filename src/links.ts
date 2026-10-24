@@ -17,6 +17,7 @@ import {
   IconRobot,
   IconSalad,
   IconSchool,
+  IconTrophy,
   IconUserCircle,
 } from '@tabler/icons-react';
 import type { LiveCheck } from './live';
@@ -43,6 +44,14 @@ const calorieTracker: Destination = {
   title: 'Calorie Tracker',
   description: 'Log meals and keep an eye on daily nutrition.',
   icon: IconSalad,
+};
+
+const calorieTrackerV2: Destination = {
+  title: 'Calorie Tracker v2',
+  description: 'Desktop calorie tracker remade in TypeScript and Mantine.',
+  icon: IconSalad,
+  href: '/apps/calorietrackerv2/',
+  host: 'matthewhearst.com/apps/calorietrackerv2',
 };
 
 const spotify: Destination = {
@@ -91,6 +100,14 @@ const repos: Destination = {
   host: 'matthewhearst.com/repos',
 };
 
+const rankings: Destination = {
+  title: 'The Rankings',
+  description: 'My rankings of takeaways.',
+  icon: IconTrophy,
+  href: 'https://rankings.matthewhearst.com',
+  host: 'rankings.matthewhearst.com',
+};
+
 type Page = 'portfolio' | 'urmamge';
 
 /**
@@ -104,8 +121,10 @@ function destinationsFor(page: Page): Destination[] {
       ? { ...portfolio, title: 'Online Portfolio', href: '/urmamge/', host: 'matthewhearst.com/urmamge' }
       : { ...portfolio, href: '/portfolio/', host: 'matthewhearst.com/portfolio' },
     repos,
+    rankings,
     overwatchBot,
     { ...calorieTracker, href: '/calorietracker/', host: 'matthewhearst.com/calorietracker' },
+    calorieTrackerV2,
     docToAudio,
     spotify,
     beatMarker,

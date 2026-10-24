@@ -5,10 +5,9 @@ import KofiButton from './KofiButton';
 import Subpage from './Subpage';
 import classes from './Subpage.module.css';
 
-/** Repos under github.com/urmamge, minus website and A2-Coursework. */
+/** Repos under github.com/urmamge, minus website, A2-Coursework and textbasedgame. */
 const repos = [
   'urmamge.github.io',
-  'textbasedgame',
   'RSRS',
   'doc-to-audio',
   'davinci-beat-marker-plugin',
@@ -16,6 +15,8 @@ const repos = [
   'overwatchbot',
   'leavingBot',
   'calorietracker',
+  'daily-nutrition-tracker-v2',
+  'therankings',
 ];
 
 /** matthewhearst.com/repos */
