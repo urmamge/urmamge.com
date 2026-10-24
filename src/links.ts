@@ -80,7 +80,7 @@ const docToAudio: Destination = {
 
 const dragTrainer: Destination = {
   title: 'Drag Trainer',
-  description: 'Windows app for learning to drag click, with a coach and practice reminders.',
+  description: 'Windows app for learning to drag click, with a coach, practice reminders and hand tracking.',
   icon: IconHandClick,
   href: '/apps/dragtrainer/',
   host: 'matthewhearst.com/apps/dragtrainer',

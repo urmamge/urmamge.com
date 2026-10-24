@@ -8,9 +8,9 @@ import appClasses from './App.module.css';
 import classes from './Subpage.module.css';
 
 const repo = 'https://github.com/urmamge/drag-trainer';
-/** Each version's release, where its Drag-Trainer.exe is attached. */
-const downloadV1 = `${repo}/releases/tag/v1.0.0`;
-const downloadV11 = `${repo}/releases/tag/v1.1.0`;
+/** Each version's Drag-Trainer.exe, straight from its GitHub release. */
+const downloadV1 = `${repo}/releases/download/v1.0.0/Drag-Trainer.exe`;
+const downloadV11 = `${repo}/releases/download/v1.1.0/Drag-Trainer.exe`;
 
 const featuresV1 = [
   'Timed CPS tests from 0.5 to 60 seconds, left or right click, with history and a best score for each length',
@@ -23,14 +23,14 @@ const featuresV1 = [
 const featuresV11 = [
   'Hand tracking: point your phone or webcam at your mouse hand, and after every drag the coach tells you your finger angle, where the drag started, how far and fast it went, and whether your fingertip lifted',
   'Learns what works for you: after 8 tracked drags it compares your best and worst drags, sums up what your best ones do differently, and marks where to start with a green circle',
-  'Drag replays: optionally record your drags and it keeps your 3 best and 3 worst from each session, says what made each one good or bad, and plays them back in slow motion or frame by frame',
+  'Drag replays: turn on recording and it keeps your 3 best and 3 worst drags from each session, says what made each one good or bad, and plays them back in slow motion or frame by frame with every click marked. Each marking can be switched off to see just your hand',
   'A phone camera setup guide inside the app',
-  'The video is analysed live on your PC and never sent anywhere. It only uses the camera when you turn it on, and never the microphone',
+  'The video is analysed live on your PC and never sent anywhere. It’s only saved if you turn on recording, and then only as short clips on your PC'
 ];
 
 const install = [
   <>
-    Download <b>Drag-Trainer.exe</b> from one of the buttons above. Pick v1.1 if you want hand tracking.
+    Download <b>Drag-Trainer.exe</b> for the version you want from the buttons above.
   </>,
   <>Double-click it. There’s nothing to install; the exe is the app, so keep it anywhere, like your Desktop.</>,
   <>
@@ -44,9 +44,9 @@ const safety = [
   'No admin rights, no system settings changed and no network requests of its own: no telemetry, accounts or ads',
   'Your scores and practice history stay on your PC, in %APPDATA%\\Drag Trainer',
   'It only counts clicks on its own grey pad, not anywhere else',
-  'v1.1 only uses your camera when you turn on hand tracking, and never your microphone. The video stays on your PC',
+  'v1.0 never uses your camera. v1.1 only uses it when you turn on hand tracking, and neither version uses your microphone',
   'Every release is built by GitHub Actions from the tagged source, with a SHA256 checksum and a build attestation you can verify',
-  'Closing the window quits it completely. To uninstall, delete Drag-Trainer.exe',
+  'Closing the window quits it completely. To uninstall, delete Drag-Trainer.exe, and delete the %APPDATA%\\Drag Trainer folder to remove your scores and replays too',
 ];
 
 function Steps({ steps }: { steps: ReactNode[] }) {
@@ -81,10 +81,10 @@ mount(
       />
 
       <Group gap="sm">
-        <Button component="a" href={downloadV11} target="_blank" rel="noopener noreferrer" color="blush" autoContrast size="md" leftSection={<IconDownload size={18} />}>
+        <Button component="a" href={downloadV11} color="blush" autoContrast size="md" leftSection={<IconDownload size={18} />}>
           Download v1.1
         </Button>
-        <Button component="a" href={downloadV1} target="_blank" rel="noopener noreferrer" color="blush" variant="outline" size="md" leftSection={<IconDownload size={18} />}>
+        <Button component="a" href={downloadV1} color="blush" variant="outline" size="md" leftSection={<IconDownload size={18} />}>
           Download v1.0
         </Button>
         <Button component="a" href={repo} target="_blank" rel="noopener noreferrer" color="tie.5" size="md" leftSection={<IconBrandGithub size={18} />}>
@@ -97,6 +97,12 @@ mount(
           Free & open source
         </Badge>
       </Group>
+
+      <Text c="dark.2" size="sm" mt={-32} maw={640}>
+        <b>Not sure which?</b> Get v1.1. Hand tracking stays off until you switch it on, so until then it works just
+        like v1.0. Pick v1.0 if you don’t want camera features at all or want a slightly smaller download (~110MB vs
+        ~119MB). Both share the same saved scores, so you can switch any time.
+      </Text>
 
       <div className={classes.panel}>
         <Title order={2} fz="h4" mb="md">

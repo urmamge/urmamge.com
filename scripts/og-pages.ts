@@ -78,7 +78,7 @@ export const ogPages: OgPage[] = [
     html: 'apps/dragtrainer/index.html',
     eyebrow: 'windows app',
     title: 'Drag Trainer',
-    text: 'Learn to drag click, with a click counter for every drag, a coach and practice reminders.',
+    text: 'Learn to drag click, with a click counter for every drag, a coach, practice reminders and hand tracking.',
     icon: 'hand-click',
   },
   {

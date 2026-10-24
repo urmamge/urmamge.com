@@ -6,7 +6,29 @@ import KofiButton from './KofiButton';
 import Subpage from './Subpage';
 import classes from './Subpage.module.css';
 
-const download = 'https://github.com/urmamge/drag-trainer/releases/tag/v1.1.0';
+const download = 'https://github.com/urmamge/drag-trainer/releases/download/v1.1.0/Drag-Trainer.exe';
+
+/** Condensed from the drag-trainer README's "Hand tracking setup". */
+const setup = [
+  <>
+    <b>Connect your phone as a camera.</b> On Windows 11 with Android, link your phone in Settings → Bluetooth &
+    devices → Mobile devices. On any phone, a free webcam app like Iriun Webcam, DroidCam or Camo works. Turn on 60fps if
+    it has the option.
+  </>,
+  <>
+    <b>Place it</b> on its side, level with the top of your mouse and 20–30cm away, filming your clicking finger
+    side-on. Keep your whole hand in shot, use good lighting, and prop it up so it can’t move.
+  </>,
+  <>
+    In Drag Trainer, click <b>Hand tracking</b>, pick your phone and press <b>Start camera</b>.
+  </>,
+  <>
+    <b>Calibrate</b> with <b>Mark back</b> and <b>Mark front</b>, as explained above.
+  </>,
+  <>
+    Optionally tick <b>Record my drags</b>, then drag in Drag practice mode or a practice session.
+  </>,
+];
 
 /** Each step of the hand tracking, in the order it happens. */
 const steps: { title: string; body: ReactNode[] }[] = [
@@ -28,8 +50,9 @@ const steps: { title: string; body: ReactNode[] }[] = [
     title: 'You show it where the button is',
     body: [
       <>
-        The camera can see your hand, but it has no idea where your mouse button is. So you calibrate: hold your
-        fingertip at the back of the button for a 3 second countdown, then do the same at the front edge.
+        The camera can see your hand, but it has no idea where your mouse button is. So you calibrate: press{' '}
+        <b>Mark back</b> and hold your fingertip on the back of the button during the 3 second countdown, then press{' '}
+        <b>Mark front</b> and do the same on the front edge.
       </>,
       <>
         It takes your fingertip’s position over the last half second of each countdown, so a tiny wobble doesn’t
@@ -97,9 +120,15 @@ const steps: { title: string; body: ReactNode[] }[] = [
     title: 'It can replay your drags (if you want)',
     body: [
       <>
-        If you turn on recording, it keeps a few seconds of small video frames in memory. When a drag ranks among your 3
-        best or 3 worst of the session, those frames are saved on your PC along with what made that drag good or bad.
-        You can then watch it back in slow motion or frame by frame, with every click marked.
+        If you tick <b>Record my drags</b>, it keeps the last few seconds of small video frames in memory. When a drag
+        ranks among your 3 best or 3 worst of the session, those frames are saved on your PC along with what made that
+        drag good or bad. Open <b>Replays</b> to watch them back in slow motion or frame by frame, with every click
+        marked.
+      </>,
+      <>
+        Each marking (hand, finger, button line, target spot and click flash) can be switched on or off, or hide them all
+        to see just your hand. Clips from your last 10 sessions are kept, and you can delete them all from the Replays
+        screen.
       </>,
     ],
   },
@@ -113,7 +142,7 @@ const limits = [
 
 const privacy = [
   'Everything happens on your PC. The hand tracker is built into the app, so the video is never uploaded anywhere',
-  'Nothing is recorded unless you turn on recording, and then it only keeps short clips of your 3 best and 3 worst drags on your PC',
+  'Nothing is recorded unless you tick Record my drags, and then it only keeps short clips of your 3 best and 3 worst drags on your PC',
   'The camera is only on while you’re using hand tracking, and the microphone is never used',
 ];
 
@@ -161,6 +190,22 @@ mount(
 
       <div className={classes.panel}>
         <Title order={2} fz="h4" mb="md">
+          Setting it up
+        </Title>
+        <Stack gap="md">
+          {setup.map((step, i) => (
+            <div key={i} className={classes.step}>
+              <span className={classes.stepNumber}>{i + 1}</span>
+              <Text c="dark.1" size="sm" pt={4} style={{ minWidth: 0 }}>
+                {step}
+              </Text>
+            </div>
+          ))}
+        </Stack>
+      </div>
+
+      <div className={classes.panel}>
+        <Title order={2} fz="h4" mb="md">
           What it can’t see
         </Title>
         <Points lines={limits} />
@@ -174,7 +219,7 @@ mount(
       </div>
 
       <Group gap="sm">
-        <Button component="a" href={download} target="_blank" rel="noopener noreferrer" color="blush" autoContrast size="md" leftSection={<IconDownload size={18} />}>
+        <Button component="a" href={download} color="blush" autoContrast size="md" leftSection={<IconDownload size={18} />}>
           Download v1.1
         </Button>
       </Group>
