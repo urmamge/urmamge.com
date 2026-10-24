@@ -11,6 +11,7 @@ import {
   IconBrandYoutube,
   IconDeviceGamepad2,
   IconFolderCode,
+  IconHandClick,
   IconHeadphones,
   IconMetronome,
   IconPuzzle,
@@ -77,6 +78,14 @@ const docToAudio: Destination = {
   host: 'matthewhearst.com/apps/doctoaudio',
 };
 
+const dragTrainer: Destination = {
+  title: 'Drag Trainer',
+  description: 'Windows app for learning to drag click, with a coach and practice reminders.',
+  icon: IconHandClick,
+  href: '/apps/dragtrainer/',
+  host: 'matthewhearst.com/apps/dragtrainer',
+};
+
 const portfolio = {
   title: 'Portfolio',
   description: 'About me and the things I build.',
@@ -117,6 +126,7 @@ function destinationsFor(page: Page): Destination[] {
     { ...calorieTracker, href: '/calorietracker/', host: 'matthewhearst.com/calorietracker' },
     calorieTrackerV2,
     docToAudio,
+    dragTrainer,
     spotify,
     beatMarker,
   ];

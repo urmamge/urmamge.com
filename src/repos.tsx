@@ -16,6 +16,7 @@ const repos = [
   'calorietracker',
   'daily-nutrition-tracker-v2',
   'therankings',
+  'drag-trainer',
 ];
 
 /** matthewhearst.com/repos */

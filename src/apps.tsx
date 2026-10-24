@@ -1,5 +1,5 @@
 import { Button, SimpleGrid } from '@mantine/core';
-import { IconClock, IconHeadphones, IconSalad } from '@tabler/icons-react';
+import { IconClock, IconHandClick, IconHeadphones, IconSalad } from '@tabler/icons-react';
 import { mount } from './render';
 import KofiButton from './KofiButton';
 import Subpage from './Subpage';
@@ -34,6 +34,16 @@ mount(
         leftSection={<IconSalad size={24} />}
       >
         Calorie Tracker v2
+      </Button>
+      <Button
+        component="a"
+        href="/apps/dragtrainer/"
+        color="blush"
+        autoContrast
+        className={classes.pluginButton}
+        leftSection={<IconHandClick size={24} />}
+      >
+        Drag Trainer
       </Button>
       <Button disabled className={classes.pluginButton} leftSection={<IconClock size={24} />}>
         TBA
