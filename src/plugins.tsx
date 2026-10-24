@@ -33,7 +33,7 @@ mount(
         className={classes.pluginButton}
         leftSection={<IconMetronome size={24} />}
       >
-        Davinci Beat Marker
+        DaVinci Beat Marker
       </Button>
       <Button disabled className={classes.pluginButton} leftSection={<IconClock size={24} />}>
         TBA

@@ -5,10 +5,9 @@ import KofiButton from './KofiButton';
 import Subpage from './Subpage';
 import classes from './Subpage.module.css';
 
-/** Repos under github.com/urmamge, minus website, A2-Coursework and textbasedgame. */
+/** Repos under github.com/urmamge, minus private ones like website, A2-Coursework, textbasedgame and RSRS. */
 const repos = [
   'urmamge.github.io',
-  'RSRS',
   'doc-to-audio',
   'davinci-beat-marker-plugin',
   'obs-spotify-now-playing',

@@ -5,8 +5,33 @@ import Footer from './Footer';
 import appClasses from './App.module.css';
 import classes from './Subpage.module.css';
 
+/** Pages the back link can return to, by path. */
+const pageNames: Record<string, string> = {
+  '/portfolio/': 'portfolio',
+  '/urmamge/': 'urmamge',
+  '/plugins/': 'plugins',
+  '/bots/': 'bots',
+  '/apps/': 'apps',
+  '/repos/': 'repos',
+  '/bots/overwatchbot/': 'Overwatch Bot',
+};
+
+/** The page the visitor came from, if it's one of the pages above; otherwise the fallback. */
+function backLink(fallback: SubpageProps['back']): SubpageProps['back'] {
+  try {
+    const from = new URL(document.referrer);
+    const path = from.pathname.endsWith('/') ? from.pathname : `${from.pathname}/`;
+    if (from.origin !== location.origin || path === location.pathname) return fallback;
+    const name = pageNames[path];
+    return name ? { href: path, label: `Back to ${name}` } : fallback;
+  } catch {
+    // No referrer, e.g. the page was opened directly.
+    return fallback;
+  }
+}
+
 interface SubpageProps {
-  /** Where the back link at the top goes. */
+  /** Where the back link at the top goes when the visitor didn't come from another page on the site. */
   back: { href: string; label: string };
   /** Small label above the title. */
   eyebrow: string;
@@ -19,7 +44,9 @@ interface SubpageProps {
 }
 
 /** Layout for pages below the main ones, e.g. matthewhearst.com/plugins. */
-export default function Subpage({ back, eyebrow, title, intro, action, children }: SubpageProps) {
+export default function Subpage({ back: fallback, eyebrow, title, intro, action, children }: SubpageProps) {
+  const back = backLink(fallback);
+
   return (
     <Box className={appClasses.page}>
       <Container size="md" py={{ base: 32, sm: 64 }}>

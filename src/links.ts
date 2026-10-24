@@ -16,7 +16,6 @@ import {
   IconPuzzle,
   IconRobot,
   IconSalad,
-  IconSchool,
   IconTrophy,
   IconUserCircle,
 } from '@tabler/icons-react';
@@ -42,7 +41,7 @@ const overwatchBot: Destination = {
 
 const calorieTracker: Destination = {
   title: 'Calorie Tracker',
-  description: 'Log meals and keep an eye on daily nutrition.',
+  description: 'Website that shows my calorie and macro history, synced from Calorie Tracker v2.',
   icon: IconSalad,
 };
 
@@ -56,7 +55,7 @@ const calorieTrackerV2: Destination = {
 
 const spotify: Destination = {
   title: 'Spotify Now Playing',
-  description: 'OBS plugin showing the current Spotify track. Going public soon.',
+  description: 'OBS plugin showing the current Spotify track.',
   icon: IconBrandSpotify,
   href: '/plugins/spotifyoverlay/',
   host: 'matthewhearst.com/plugins/spotifyoverlay',
@@ -76,14 +75,6 @@ const docToAudio: Destination = {
   icon: IconHeadphones,
   href: '/apps/doctoaudio/',
   host: 'matthewhearst.com/apps/doctoaudio',
-};
-
-const dissertation: Destination = {
-  title: 'Final Dissertation',
-  description: 'My final-year university dissertation.',
-  icon: IconSchool,
-  href: 'https://github.com/urmamge/final-dissertation',
-  host: 'github.com/urmamge/final-dissertation',
 };
 
 const portfolio = {
@@ -111,8 +102,8 @@ const rankings: Destination = {
 type Page = 'portfolio' | 'urmamge';
 
 /**
- * Cards shown on both pages, in display order: Portfolio first, then Repos, TBA cards last,
- * Final Dissertation at the very end. Add new cards here so both pages get them.
+ * Cards shown on both pages, in display order: Portfolio first, then Repos, TBA cards last.
+ * Add new cards here so both pages get them.
  */
 function destinationsFor(page: Page): Destination[] {
   return [
@@ -128,7 +119,6 @@ function destinationsFor(page: Page): Destination[] {
     docToAudio,
     spotify,
     beatMarker,
-    dissertation,
   ];
 }
 
