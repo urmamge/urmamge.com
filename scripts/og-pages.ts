@@ -82,6 +82,13 @@ export const ogPages: OgPage[] = [
     icon: 'hand-click',
   },
   {
+    html: 'apps/dragtrainer/handtracking/index.html',
+    eyebrow: 'drag trainer v1.1',
+    title: 'How hand tracking works',
+    text: 'How Drag Trainer watches your hand through a camera and works out what your finger did on every drag.',
+    icon: 'hand-finger',
+  },
+  {
     html: 'bots/index.html',
     eyebrow: 'bots',
     title: 'Bots',

@@ -64,6 +64,7 @@ export default defineConfig({
         doctoaudio: resolve(import.meta.dirname, 'apps/doctoaudio/index.html'),
         calorietrackerv2: resolve(import.meta.dirname, 'apps/calorietrackerv2/index.html'),
         dragtrainer: resolve(import.meta.dirname, 'apps/dragtrainer/index.html'),
+        handtracking: resolve(import.meta.dirname, 'apps/dragtrainer/handtracking/index.html'),
         bots: resolve(import.meta.dirname, 'bots/index.html'),
         overwatchbot: resolve(import.meta.dirname, 'bots/overwatchbot/index.html'),
         overwatchbotPrivacy: resolve(import.meta.dirname, 'bots/overwatchbot/privacy-policy/index.html'),

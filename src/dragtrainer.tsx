@@ -1,5 +1,5 @@
 import { Badge, Button, Group, SimpleGrid, Stack, Text, Title } from '@mantine/core';
-import { IconBrandGithub, IconDownload } from '@tabler/icons-react';
+import { IconBrandGithub, IconDownload, IconHandFinger } from '@tabler/icons-react';
 import type { ReactNode } from 'react';
 import { mount } from './render';
 import KofiButton from './KofiButton';
@@ -8,10 +8,11 @@ import appClasses from './App.module.css';
 import classes from './Subpage.module.css';
 
 const repo = 'https://github.com/urmamge/drag-trainer';
-/** The repo's newest release, where Drag-Trainer.exe is attached. */
-const download = `${repo}/releases/latest`;
+/** Each version's release, where its Drag-Trainer.exe is attached. */
+const downloadV1 = `${repo}/releases/tag/v1.0.0`;
+const downloadV11 = `${repo}/releases/tag/v1.1.0`;
 
-const features = [
+const featuresV1 = [
   'Timed CPS tests from 0.5 to 60 seconds, left or right click, with history and a best score for each length',
   'Drag practice mode with no timer: it counts the clicks in each drag and draws a bar for each one, so you can see how consistent you are',
   'A coach that reacts to every drag and writes a session report: inconsistent drags, drags that stall partway, fading as you tire, and whether slow resets are holding your CPS back',
@@ -19,9 +20,17 @@ const features = [
   'A built-in guide to drag clicking: which mice can do it, finger position, pressure, consistency, resets and grip tape',
 ];
 
+const featuresV11 = [
+  'Hand tracking: point your phone or webcam at your mouse hand, and after every drag the coach tells you your finger angle, where the drag started, how far and fast it went, and whether your fingertip lifted',
+  'Learns what works for you: after 8 tracked drags it compares your best and worst drags, sums up what your best ones do differently, and marks where to start with a green circle',
+  'Drag replays: optionally record your drags and it keeps your 3 best and 3 worst from each session, says what made each one good or bad, and plays them back in slow motion or frame by frame',
+  'A phone camera setup guide inside the app',
+  'The video is analysed live on your PC and never sent anywhere. It only uses the camera when you turn it on, and never the microphone',
+];
+
 const install = [
   <>
-    Download <b>Drag-Trainer.exe</b> from the button above.
+    Download <b>Drag-Trainer.exe</b> from one of the buttons above. Pick v1.1 if you want hand tracking.
   </>,
   <>Double-click it. There’s nothing to install; the exe is the app, so keep it anywhere, like your Desktop.</>,
   <>
@@ -35,6 +44,7 @@ const safety = [
   'No admin rights, no system settings changed and no network requests of its own: no telemetry, accounts or ads',
   'Your scores and practice history stay on your PC, in %APPDATA%\\Drag Trainer',
   'It only counts clicks on its own grey pad, not anywhere else',
+  'v1.1 only uses your camera when you turn on hand tracking, and never your microphone. The video stays on your PC',
   'Every release is built by GitHub Actions from the tagged source, with a SHA256 checksum and a build attestation you can verify',
   'Closing the window quits it completely. To uninstall, delete Drag-Trainer.exe',
 ];
@@ -71,8 +81,11 @@ mount(
       />
 
       <Group gap="sm">
-        <Button component="a" href={download} target="_blank" rel="noopener noreferrer" color="blush" autoContrast size="md" leftSection={<IconDownload size={18} />}>
-          Download Drag Trainer
+        <Button component="a" href={downloadV11} target="_blank" rel="noopener noreferrer" color="blush" autoContrast size="md" leftSection={<IconDownload size={18} />}>
+          Download v1.1
+        </Button>
+        <Button component="a" href={downloadV1} target="_blank" rel="noopener noreferrer" color="blush" variant="outline" size="md" leftSection={<IconDownload size={18} />}>
+          Download v1.0
         </Button>
         <Button component="a" href={repo} target="_blank" rel="noopener noreferrer" color="tie.5" size="md" leftSection={<IconBrandGithub size={18} />}>
           View on GitHub
@@ -100,10 +113,10 @@ mount(
       <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="lg">
         <div className={classes.panel}>
           <Title order={2} fz="h4" mb="md">
-            What it does
+            What it does in v1.0
           </Title>
           <Stack gap="sm">
-            {features.map((feature) => (
+            {featuresV1.map((feature) => (
               <Text key={feature} c="dark.1" size="sm">
                 {feature}
               </Text>
@@ -112,12 +125,31 @@ mount(
         </div>
 
         <div className={classes.panel}>
-          <Title order={2} fz="h4" mb="md">
-            Install
+          <Title order={2} fz="h4" mb={4}>
+            What v1.1 adds
           </Title>
-          <Steps steps={install} />
+          <Text c="dark.3" size="sm" mb="md">
+            Everything in v1.0, plus:
+          </Text>
+          <Stack gap="sm">
+            {featuresV11.map((feature) => (
+              <Text key={feature} c="dark.1" size="sm">
+                {feature}
+              </Text>
+            ))}
+          </Stack>
+          <Button component="a" href="/apps/dragtrainer/handtracking/" color="tie.5" size="sm" mt="lg" leftSection={<IconHandFinger size={16} />}>
+            How it works
+          </Button>
         </div>
       </SimpleGrid>
+
+      <div className={classes.panel}>
+        <Title order={2} fz="h4" mb="md">
+          Install
+        </Title>
+        <Steps steps={install} />
+      </div>
 
       <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="lg">
         <img src="/screenshots/dragtrainer-timed.png" alt="A timed CPS test result" className={classes.screenshot} />
@@ -138,8 +170,7 @@ mount(
       </div>
 
       <Text c="dark.3" size="sm">
-        Coming soon: hand tracking that watches your drags through a camera and tells you what to fix. Some game
-        servers limit or flag very high CPS, so check the rules where you play.
+        Some game servers limit or flag very high CPS, so check the rules where you play.
       </Text>
     </Stack>
   </Subpage>,

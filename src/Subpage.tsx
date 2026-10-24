@@ -14,6 +14,7 @@ const pageNames: Record<string, string> = {
   '/apps/': 'apps',
   '/repos/': 'repos',
   '/bots/overwatchbot/': 'Overwatch Bot',
+  '/apps/dragtrainer/': 'Drag Trainer',
 };
 
 /** The page the visitor came from, if it's one of the pages above; otherwise the fallback. */
