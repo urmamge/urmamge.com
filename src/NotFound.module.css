@@ -1,0 +1,28 @@
+/* The skin face from the main pages, looking around. */
+.lostFace {
+  transform: rotate(-12deg);
+  animation: lookAround 4s ease-in-out infinite;
+}
+
+@keyframes lookAround {
+  0%,
+  100% {
+    transform: rotate(-12deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+}
+
+.bigCode {
+  font-size: clamp(4rem, 18vw, 7rem);
+  line-height: 1;
+  color: var(--mantine-color-blush-4);
+  text-shadow: 6px 6px 0 var(--mantine-color-dark-6);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lostFace {
+    animation: none;
+  }
+}

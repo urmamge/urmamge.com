@@ -1,0 +1,54 @@
+.page {
+  min-height: 100vh;
+  background:
+    linear-gradient(rgba(80, 0, 0, 0.75), rgba(160, 20, 20, 0.6)),
+    var(--mantine-color-dark-8);
+}
+
+.died {
+  font-family: Silkscreen, monospace;
+  color: #fff;
+}
+
+.title,
+.cause,
+.score {
+  font-family: inherit;
+  text-shadow: 2px 2px 0 #3f3f3f;
+}
+
+.title {
+  font-size: clamp(2.5rem, 10vw, 4.5rem);
+  line-height: 1.1;
+  text-shadow: 4px 4px 0 #3f3f3f;
+}
+
+.score span {
+  color: #ffff55;
+}
+
+/* Minecraft's grey menu button, blue on hover. */
+.button {
+  display: block;
+  padding: 10px 12px;
+  font-family: Silkscreen, monospace;
+  font-size: 14px;
+  color: #e0e0e0;
+  text-decoration: none;
+  text-shadow: 2px 2px 0 #3f3f3f;
+  background: #6f6f6f;
+  border: 2px solid #000;
+  box-shadow:
+    inset 2px 2px 0 #a8a8a8,
+    inset -2px -2px 0 #4a4a4a;
+}
+
+.button:hover,
+.button:focus-visible {
+  color: #ffffa0;
+  background: #7f86b8;
+  box-shadow:
+    inset 2px 2px 0 #b8bfee,
+    inset -2px -2px 0 #4f5580;
+  outline: none;
+}

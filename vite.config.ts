@@ -11,6 +11,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(import.meta.dirname, 'index.html'),
+        notFound: resolve(import.meta.dirname, '404.html'),
         portfolio: resolve(import.meta.dirname, 'portfolio/index.html'),
         urmamge: resolve(import.meta.dirname, 'urmamge/index.html'),
         plugins: resolve(import.meta.dirname, 'plugins/index.html'),
@@ -24,6 +25,7 @@ export default defineConfig({
         overwatchbotPrivacy: resolve(import.meta.dirname, 'bots/overwatchbot/privacy-policy/index.html'),
         overwatchbotTerms: resolve(import.meta.dirname, 'bots/overwatchbot/terms-of-service/index.html'),
         repos: resolve(import.meta.dirname, 'repos/index.html'),
+        youdiedmc: resolve(import.meta.dirname, 'youdiedmc/index.html'),
       },
     },
   },

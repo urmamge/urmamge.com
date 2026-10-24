@@ -142,6 +142,13 @@ export const sections: Section[] = [
   { name: 'Repos', icon: IconFolderCode, href: '/repos/' },
 ];
 
+/** The two main pages then the listing pages, for pages with no back link like the 404 page. */
+export const everyPage: Section[] = [
+  { name: 'Portfolio', icon: IconUserCircle, href: '/portfolio/' },
+  { name: 'urmamge', icon: IconDeviceGamepad2, href: '/urmamge/' },
+  ...sections,
+];
+
 export interface Social {
   name: string;
   handle: string;
