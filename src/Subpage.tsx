@@ -50,7 +50,19 @@ export default function Subpage({ back: fallback, eyebrow, title, intro, action,
   return (
     <Box className={appClasses.page}>
       <Container size="md" py={{ base: 32, sm: 64 }}>
-        <Anchor href={back.href} c="dark.2" size="sm" className={classes.back}>
+        <Anchor
+          href={back.href}
+          onClick={(event) => {
+            // Step back through history instead of opening the page again. Opening it would make the
+            // previous page's back link point here, so Bots ⇄ Overwatch Bot would loop forever.
+            if (back === fallback || event.ctrlKey || event.metaKey || event.shiftKey || event.button !== 0) return;
+            event.preventDefault();
+            history.back();
+          }}
+          c="dark.2"
+          size="sm"
+          className={classes.back}
+        >
           <Group gap={6}>
             <IconArrowLeft size={16} />
             {back.label}
